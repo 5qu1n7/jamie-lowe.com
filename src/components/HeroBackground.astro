@@ -9,8 +9,8 @@
     muted 
     loop 
     playsinline
-    preload="auto"
-    poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect fill='%239CAF88' width='1920' height='1080'/%3E%3C/svg%3E"
+    controls={false}
+    preload="metadata"
   >
     <source src="/hero-bg.mp4" type="video/mp4" />
     Your browser does not support the video tag.
@@ -19,6 +19,20 @@
   <!-- Overlay to darken video and apply earth tone color tint -->
   <div class="hero-video-overlay"></div>
 </div>
+
+<script>
+  // Ensure video plays even if autoplay is blocked
+  const video = document.querySelector('.hero-video');
+  if (video) {
+    video.muted = true;
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch((error) => {
+        console.log('Video autoplay failed, using fallback background');
+      });
+    }
+  }
+</script>
 
 <style>
   .hero-bg-container {
@@ -41,6 +55,7 @@
     object-fit: cover;
     transform: translate(-50%, -50%);
     z-index: 1;
+    display: block;
   }
 
   /* Overlay to add earth tone tint and darken for text readability */
