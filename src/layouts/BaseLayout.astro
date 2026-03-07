@@ -2,7 +2,6 @@
 import '../styles/global.css';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
-import Landbot from '../components/Landbot.astro';
 
 interface Props {
   title: string;
@@ -55,6 +54,5 @@ const { title, description = "Jamie Lowe Real Estate - San Antonio Military Real
       <slot />
     </main>
     <Footer />
-    <Landbot />
   </body>
 </html>
