@@ -59,12 +59,14 @@
 </script>
 
 <style>
+  :global(.hero) {
+    background-size: cover;
+    background-position: center;
+  }
+  
   .hero-bg-container {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     overflow: hidden;
     z-index: 0;
     background: linear-gradient(135deg, #d4a574 0%, #8b7355 100%);
