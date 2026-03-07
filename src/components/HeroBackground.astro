@@ -2,63 +2,14 @@
 ---
 
 <div class="hero-bg-container">
-  <video 
-    class="hero-video"
-    autoplay 
-    muted 
-    loop 
-    playsinline
-    preload="metadata"
-  >
-    <source src="/hero-bg.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+  <img 
+    class="hero-image"
+    src="/hero-bg.jpg" 
+    alt="Hero background"
+  />
   
   <div class="hero-video-overlay"></div>
 </div>
-
-{/* Client-side initialization for video playback */}
-<script type="text/javascript">
-  (function() {
-    'use strict';
-    
-    function initHeroVideo() {
-      const videoElement = document.querySelector('.hero-video');
-      if (!videoElement) return;
-      
-      // Attempt to play video
-      const attemptPlay = function() {
-        const playPromise = videoElement.play();
-        if (playPromise !== undefined) {
-          playPromise
-            .then(function() {
-              console.log('✓ Hero video playing');
-            })
-            .catch(function(err) {
-              console.warn('⚠ Autoplay blocked:', err.name);
-            });
-        }
-      };
-      
-      // Try playing once video is ready
-      if (videoElement.readyState >= 2) {
-        attemptPlay();
-      } else {
-        videoElement.addEventListener('canplay', attemptPlay, { once: true });
-      }
-      
-      // Fallback: play on user click
-      document.addEventListener('click', attemptPlay, { once: true });
-    }
-    
-    // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initHeroVideo);
-    } else {
-      initHeroVideo();
-    }
-  })();
-</script>
 
 <style>
   :global(.hero) {
@@ -79,7 +30,7 @@
     background: linear-gradient(135deg, #d4a574 0%, #8b7355 100%);
   }
 
-  .hero-video {
+  .hero-image {
     display: block;
     position: absolute;
     top: 0;
