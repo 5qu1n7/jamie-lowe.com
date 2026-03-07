@@ -15,6 +15,42 @@
   <div class="hero-video-overlay"></div>
 </div>
 
+<script is:inline>
+  (function() {
+    function initHeroVideo() {
+      const videoElement = document.querySelector('.hero-video');
+      if (!videoElement) return;
+      
+      // Ensure video attempts to play
+      const attemptPlay = () => {
+        const playPromise = videoElement.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => console.log('✓ Hero video playing'))
+            .catch(err => console.warn('⚠ Autoplay blocked:', err.name));
+        }
+      };
+      
+      // Try to play on load
+      if (videoElement.readyState >= 2) {
+        attemptPlay();
+      } else {
+        videoElement.addEventListener('canplay', attemptPlay, { once: true });
+      }
+      
+      // Also try on user interaction
+      document.addEventListener('click', attemptPlay, { once: true });
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initHeroVideo);
+    } else {
+      initHeroVideo();
+    }
+  })();
+</script>
+
 <style>
   .hero-bg-container {
     position: absolute;
@@ -58,42 +94,3 @@
     z-index: 10;
   }
 </style>
-
-<script>
-  // Ensure video plays despite browser autoplay policies
-  const videoElement = document.querySelector('.hero-video');
-  
-  if (videoElement) {
-    // Try to play the video
-    const playPromise = videoElement.play();
-    
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          console.log('✓ Hero video playing successfully');
-        })
-        .catch(error => {
-          console.warn('⚠ Hero video autoplay was blocked:', error);
-          // Browser blocked autoplay, but muted video should work on next user interaction
-          videoElement.muted = true;
-          videoElement.play().catch(() => {
-            console.error('✗ Hero video failed to play');
-          });
-        });
-    }
-    
-    // Log video state for debugging
-    videoElement.addEventListener('loadstart', () => {
-      console.log('Video: loadstart');
-    });
-    videoElement.addEventListener('canplay', () => {
-      console.log('✓ Video: ready to play');
-    });
-    videoElement.addEventListener('play', () => {
-      console.log('▶ Video: playing');
-    });
-    videoElement.addEventListener('error', (e) => {
-      console.error('✗ Video error:', e);
-    });
-  }
-</script>
