@@ -15,30 +15,37 @@
   <div class="hero-video-overlay"></div>
 </div>
 
-<script is:inline>
+{/* Client-side initialization for video playback */}
+<script type="text/javascript">
   (function() {
+    'use strict';
+    
     function initHeroVideo() {
       const videoElement = document.querySelector('.hero-video');
       if (!videoElement) return;
       
-      // Ensure video attempts to play
-      const attemptPlay = () => {
+      // Attempt to play video
+      const attemptPlay = function() {
         const playPromise = videoElement.play();
         if (playPromise !== undefined) {
           playPromise
-            .then(() => console.log('✓ Hero video playing'))
-            .catch(err => console.warn('⚠ Autoplay blocked:', err.name));
+            .then(function() {
+              console.log('✓ Hero video playing');
+            })
+            .catch(function(err) {
+              console.warn('⚠ Autoplay blocked:', err.name);
+            });
         }
       };
       
-      // Try to play on load
+      // Try playing once video is ready
       if (videoElement.readyState >= 2) {
         attemptPlay();
       } else {
         videoElement.addEventListener('canplay', attemptPlay, { once: true });
       }
       
-      // Also try on user interaction
+      // Fallback: play on user click
       document.addEventListener('click', attemptPlay, { once: true });
     }
     
