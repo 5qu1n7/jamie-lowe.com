@@ -58,3 +58,42 @@
     z-index: 10;
   }
 </style>
+
+<script>
+  // Ensure video plays despite browser autoplay policies
+  const videoElement = document.querySelector('.hero-video');
+  
+  if (videoElement) {
+    // Try to play the video
+    const playPromise = videoElement.play();
+    
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          console.log('✓ Hero video playing successfully');
+        })
+        .catch(error => {
+          console.warn('⚠ Hero video autoplay was blocked:', error);
+          // Browser blocked autoplay, but muted video should work on next user interaction
+          videoElement.muted = true;
+          videoElement.play().catch(() => {
+            console.error('✗ Hero video failed to play');
+          });
+        });
+    }
+    
+    // Log video state for debugging
+    videoElement.addEventListener('loadstart', () => {
+      console.log('Video: loadstart');
+    });
+    videoElement.addEventListener('canplay', () => {
+      console.log('✓ Video: ready to play');
+    });
+    videoElement.addEventListener('play', () => {
+      console.log('▶ Video: playing');
+    });
+    videoElement.addEventListener('error', (e) => {
+      console.error('✗ Video error:', e);
+    });
+  }
+</script>
