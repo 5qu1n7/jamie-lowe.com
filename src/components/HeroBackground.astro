@@ -1,0 +1,236 @@
+---
+---
+
+<div class="hero-bg-container">
+  <svg class="hero-bg-svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+    <!-- Sky with gradient -->
+    <defs>
+      <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#f5f3f0;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#e8e4dd;stop-opacity:1" />
+      </linearGradient>
+      
+      <!-- Hill country rolling hills gradient -->
+      <linearGradient id="hillGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#d4a574;stop-opacity:0.95" />
+        <stop offset="100%" style="stop-color:#c49568;stop-opacity:1" />
+      </linearGradient>
+      
+      <linearGradient id="hillGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#9caf88;stop-opacity:0.85" />
+        <stop offset="100%" style="stop-color:#8b9976;stop-opacity:1" />
+      </linearGradient>
+      
+      <linearGradient id="hillGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#8b7355;stop-opacity:0.75" />
+        <stop offset="100%" style="stop-color:#7a6449;stop-opacity:1" />
+      </linearGradient>
+
+      <filter id="blur">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+      </filter>
+    </defs>
+    
+    <!-- Sky background -->
+    <rect width="1200" height="800" fill="url(#skyGradient)"/>
+    
+    <!-- Distant mountains (back layer) - parallax slower -->
+    <path class="parallax-slow" d="M 0 500 Q 300 350 600 500 T 1200 500 L 1200 800 L 0 800 Z" fill="url(#hillGradient3)" opacity="0.4"/>
+    
+    <!-- Mid-distance hills -->
+    <path class="parallax-mid" d="M 0 550 Q 200 400 400 480 T 800 520 T 1200 550 L 1200 800 L 0 800 Z" fill="url(#hillGradient2)"/>
+    
+    <!-- Foreground hills (closest, fastest parallax) -->
+    <path class="parallax-fast" d="M 0 600 Q 150 480 300 550 T 600 580 T 900 550 T 1200 600 L 1200 800 L 0 800 Z" fill="url(#hillGradient1)"/>
+    
+    <!-- Military accent elements -->
+    <!-- Texas flag stars scattered subtly -->
+    <g class="military-accent" opacity="0.15">
+      <circle cx="900" cy="200" r="8" fill="#d4a574"/>
+      <circle cx="1050" cy="250" r="6" fill="#d4a574"/>
+      <circle cx="150" cy="180" r="7" fill="#d4a574"/>
+      <circle cx="300" cy="280" r="5" fill="#d4a574"/>
+    </g>
+    
+    <!-- Subtle military shield accent -->
+    <g class="military-accent" opacity="0.08" transform="translate(1050, 100)">
+      <path d="M 0 0 L 30 0 L 30 40 Q 15 55 0 40 Z" fill="#8b7355" stroke="#8b7355" stroke-width="1"/>
+      <circle cx="15" cy="20" r="3" fill="#8b7355"/>
+    </g>
+
+    <!-- Another subtle accent -->
+    <g class="military-accent" opacity="0.08" transform="translate(100, 150)">
+      <path d="M 0 0 L 30 0 L 30 40 Q 15 55 0 40 Z" fill="#8b7355" stroke="#8b7355" stroke-width="1"/>
+      <circle cx="15" cy="20" r="3" fill="#8b7355"/>
+    </g>
+  </svg>
+  
+  <!-- Optional: Floating elements for added movement -->
+  <div class="floating-elements">
+    <div class="float float-1"></div>
+    <div class="float float-2"></div>
+    <div class="float float-3"></div>
+  </div>
+</div>
+
+<style>
+  .hero-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .hero-bg-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* Parallax animation */
+  .parallax-slow {
+    animation: parallax-slow 20s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  .parallax-mid {
+    animation: parallax-mid 15s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  .parallax-fast {
+    animation: parallax-fast 10s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  @keyframes parallax-slow {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(15px);
+    }
+  }
+
+  @keyframes parallax-mid {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes parallax-fast {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-30px);
+    }
+  }
+
+  /* Floating military accent elements */
+  .military-accent {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      opacity: 0.08;
+    }
+    50% {
+      opacity: 0.15;
+    }
+  }
+
+  .floating-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .float {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(212, 165, 116, 0.3), rgba(212, 165, 116, 0.05));
+    filter: blur(40px);
+  }
+
+  .float-1 {
+    width: 200px;
+    height: 200px;
+    top: 10%;
+    left: 10%;
+    animation: float-move1 15s ease-in-out infinite;
+  }
+
+  .float-2 {
+    width: 150px;
+    height: 150px;
+    top: 30%;
+    right: 5%;
+    animation: float-move2 20s ease-in-out infinite;
+  }
+
+  .float-3 {
+    width: 180px;
+    height: 180px;
+    bottom: 15%;
+    left: 50%;
+    animation: float-move3 18s ease-in-out infinite;
+  }
+
+  @keyframes float-move1 {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(30px, -30px);
+    }
+  }
+
+  @keyframes float-move2 {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(-40px, 20px);
+    }
+  }
+
+  @keyframes float-move3 {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(25px, 25px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .float {
+      filter: blur(50px);
+    }
+
+    .float-1 {
+      width: 150px;
+      height: 150px;
+    }
+
+    .float-2 {
+      width: 120px;
+      height: 120px;
+    }
+
+    .float-3 {
+      width: 140px;
+      height: 140px;
+    }
+  }
+</style>
