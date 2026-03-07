@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+---
+
+<BaseLayout 
+  title="Client Reviews - Jamie Lowe Real Estate"
+  description="Read what clients say about Jamie Lowe. 100+ five-star reviews from military families and home buyers in San Antonio."
+>
+  <Hero slideshow>
+    <h1>Client Reviews</h1>
+    <p>What Our Clients Say About Their Experience</p>
+  </Hero>
+
+  <section class="container py-3xl">
+    <div class="reviews-header">
+      <h2 style="text-align: center; margin-bottom: 1rem;">100+ Five-Star Reviews</h2>
+      <p style="text-align: center; color: var(--text-gray); margin-bottom: 3rem;">
+        Don't just take our word for it - hear from our satisfied clients across San Antonio
+      </p>
+    </div>
+
+    <div class="trust-badges">
+      <div class="trust-badge">
+        <span class="trust-icon">⭐</span>
+        <span class="trust-label">Google Reviews</span>
+      </div>
+      <div class="trust-badge">
+        <span class="trust-icon">🏠</span>
+        <span class="trust-label">Zillow</span>
+      </div>
+      <div class="trust-badge">
+        <span class="trust-icon">📋</span>
+        <span class="trust-label">Realtor.com</span>
+      </div>
+      <div class="trust-badge">
+        <span class="trust-icon">🏆</span>
+        <span class="trust-label">FastExpert</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 mt-3xl">
+      <TestimonialCard 
+        name="John Gilbert"
+        quote="Thank goodness for Jamie! We had to purchase our home from afar, which is a daunting task, but Jamie made it a dream. She went out of her way to find the perfect home for us."
+        role="Military Family"
+      />
+      <TestimonialCard 
+        name="Mitchell Polu"
+        quote="Caring, honest, fair and hardworking! This is our 4th house purchase due to military obligations with moves and by far was the best representation on our behalf as buyers."
+        role="Military Family"
+      />
+      <TestimonialCard 
+        name="Guinness Gascon"
+        quote="Jamie Lowe is definitely one of the most hard working, caring, and knowledgeable realtor me and my wife had work with. She made buying a house such a breeze!"
+        role="First-Time Buyer"
+      />
+      <TestimonialCard 
+        name="Sarah Martinez"
+        quote="As a first-time military buyer, I was nervous about the process. Jamie guided me through every step and helped me get a great deal on my first home!"
+        role="VA Loan Buyer"
+      />
+      <TestimonialCard 
+        name="David Chen"
+        quote="Jamie helped us sell our home in just 2 weeks above asking price. Her marketing expertise and negotiation skills are top-notch. Highly recommend!"
+        role="Seller"
+      />
+      <TestimonialCard 
+        name="Jennifer Wilson"
+        quote="We were relocate to San Antonio for work and didn't know the area at all. Jamie found us the perfect neighborhood close to base. Couldn't be happier!"
+        role="Relocated Buyer"
+      />
+      <TestimonialCard 
+        name="Michael Thompson"
+        quote="Best realtor I've ever worked with. She understands the military lifestyle and VA loans inside and out. Will definitely use her for our next move."
+        role="VA Loan Buyer"
+      />
+      <TestimonialCard 
+        name="Amanda Rodriguez"
+        quote="Jamie made the new construction buying process so easy. She coordinated with the builder, attended inspections, and fought for our interests throughout."
+        role="New Construction Buyer"
+      />
+      <TestimonialCard 
+        name="Robert Kim"
+        quote="Professional, responsive, and truly cares about her clients. Jamie goes above and beyond. We've recommended her to all our military friends."
+        role="Military Family"
+      />
+    </div>
+
+    <div class="cta-section">
+      <h3>Ready to Work with Jamie?</h3>
+      <p>Let us help you find your dream home in San Antonio</p>
+      <a href="/contact" class="btn btn-primary">Schedule a Consultation</a>
+    </div>
+  </section>
+
+  <style>
+    .reviews-header {
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-3xl);
+      flex-wrap: wrap;
+      padding: var(--spacing-2xl);
+      background: var(--bg-light);
+      border-radius: var(--radius-lg);
+    }
+
+    .trust-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .trust-icon {
+      font-size: 2rem;
+    }
+
+    .trust-label {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .cta-section {
+      text-align: center;
+      margin-top: var(--spacing-4xl);
+      padding: var(--spacing-3xl);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: var(--radius-lg);
+      color: var(--bg-white);
+    }
+
+    .cta-section h3 {
+      color: var(--bg-white);
+      margin-bottom: var(--spacing-base);
+    }
+
+    .cta-section p {
+      color: var(--bg-light);
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .cta-section .btn {
+      background: var(--bg-white);
+      color: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+      .grid-cols-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-badges {
+        gap: var(--spacing-xl);
+      }
+    }
+  </style>
+</BaseLayout>

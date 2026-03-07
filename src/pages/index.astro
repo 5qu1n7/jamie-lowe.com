@@ -21,6 +21,34 @@ import NewsletterSignup from '../components/NewsletterSignup.astro';
     </div>
   </Hero>
 
+  <!-- Trust Indicators / Credentials Bar -->
+  <section class="credentials-bar">
+    <div class="container">
+      <div class="credentials-grid">
+        <div class="credential-item">
+          <span class="credential-icon">🎖️</span>
+          <span class="credential-text">Military Veteran</span>
+        </div>
+        <div class="credential-item">
+          <span class="credential-icon">🏆</span>
+          <span class="credential-text">VA Loan Specialist</span>
+        </div>
+        <div class="credential-item">
+          <span class="credential-icon">🏠</span>
+          <span class="credential-text">500+ Transactions</span>
+        </div>
+        <div class="credential-item">
+          <span class="credential-icon">⭐</span>
+          <span class="credential-text">100+ Five-Star Reviews</span>
+        </div>
+        <div class="credential-item">
+          <span class="credential-icon">📍</span>
+          <span class="credential-text">San Antonio Expert</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Value Propositions -->
   <section class="container py-3xl mt-3xl">
     <h2 style="text-align: center; margin-bottom: 2rem;">Why Choose Jamie Lowe?</h2>
@@ -226,11 +254,45 @@ import NewsletterSignup from '../components/NewsletterSignup.astro';
       background-color: var(--bg-light);
     }
 
+    /* Credentials Bar */
+    .credentials-bar {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      padding: var(--spacing-2xl) 0;
+    }
+
+    .credentials-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--spacing-lg);
+      text-align: center;
+    }
+
+    .credential-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .credential-icon {
+      font-size: 2rem;
+    }
+
+    .credential-text {
+      color: var(--bg-white);
+      font-weight: 600;
+      font-size: var(--font-size-sm);
+    }
+
     @media (max-width: 768px) {
       .grid-cols-2,
       .grid-cols-3,
       .grid-cols-4 {
         grid-template-columns: 1fr;
+      }
+
+      .credentials-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
