@@ -7,9 +7,18 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  canonicalURL?: string;
 }
 
-const { title, description = "Jamie Lowe Real Estate - San Antonio Military Real Estate Specialist", image = "/og-image.jpg" } = Astro.props;
+const { 
+  title, 
+  description = "Jamie Lowe Real Estate - San Antonio Military Real Estate Specialist", 
+  image = "/og-image.jpg",
+  canonicalURL = Astro.url.href
+} = Astro.props;
+
+const siteName = "Jamie Lowe Real Estate";
+const twitterHandle = "@jamielowerealtor";
 ---
 
 <!doctype html>
@@ -17,18 +26,79 @@ const { title, description = "Jamie Lowe Real Estate - San Antonio Military Real
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="author" content="Jamie Lowe" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content={siteName} />
+    
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
+    <meta name="twitter:site" content={twitterHandle} />
+    <meta name="twitter:creator" content={twitterHandle} />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#3e2723" />
     
     <title>{title}</title>
+    
+    <!-- JSON-LD Structured Data for Local Business -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "RealEstateAgent",
+        "name": "Jamie Lowe Real Estate",
+        "description": "Military real estate specialist serving San Antonio. Expert in VA loans, military relocation, and new construction homes.",
+        "url": "https://jamie-lowe.com",
+        "telephone": "+1-210-555-0123",
+        "email": "jamie@jamie-lowe.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "San Antonio",
+          "addressRegion": "TX",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "29.4241",
+          "longitude": "-98.4936"
+        },
+        "openingHours": "Mo-Fr 08:00-18:00, Sa 09:00-14:00",
+        "priceRange": "$$",
+        "areaServed": {
+          "@type": "GeoCircle",
+          "geoMidpoint": {
+            "@type": "GeoCoordinates",
+            "latitude": "29.4241",
+            "longitude": "-98.4936"
+          },
+          "geoRadius": "50000"
+        },
+        "serviceType": ["Residential Real Estate", "VA Loans", "Military Relocation", "New Construction", "First-Time Home Buyers"],
+        "keywords": "military real estate, VA loans, San Antonio real estate, military relocation, home buying, new construction",
+        "sameAs": [
+          "https://www.facebook.com/jamielowerealtor",
+          "https://www.instagram.com/jamielowerealtor"
+        ]
+      }
+    </script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
