@@ -2,28 +2,10 @@
 ---
 
 <div class="hero-bg-container">
-  <!-- Video background -->
-  <video 
-    class="hero-video"
-    autoplay 
-    muted 
-    loop 
-    playsinline
-    preload="metadata"
-  >
-    <!-- Texas Hill Country scenic drive -->
-    <source src="https://videos.pexels.com/video-files/5755915/5755915-hd_1920_1080_30fps.mp4" type="video/mp4" />
-    
-    <!-- Fallback: Another scenic landscape -->
-    <source src="https://videos.pexels.com/video-files/5513832/5513832-hd_1920_1080_30fps.mp4" type="video/mp4" />
-    
-    <!-- Fallback: Rolling hills/landscape -->
-    <source src="https://videos.pexels.com/video-files/5408175/5408175-hd_1920_1080_30fps.mp4" type="video/mp4" />
-    
-    Your browser does not support the video tag.
-  </video>
+  <!-- Animated gradient background with subtle animation -->
+  <div class="animated-gradient"></div>
   
-  <!-- Overlay to darken video and apply earth tone color tint -->
+  <!-- Overlay to add earth tone tint for text readability -->
   <div class="hero-video-overlay"></div>
 </div>
 
@@ -36,21 +18,39 @@
     height: 100%;
     overflow: hidden;
     z-index: 0;
-    background-color: #3e2723;
   }
 
-  .hero-video {
+  .animated-gradient {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transform: translate(-50%, -50%);
+    background: linear-gradient(
+      -45deg,
+      #d4a574,
+      #9caf88,
+      #8b7355,
+      #d4a574
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
     z-index: 1;
   }
 
-  /* Overlay to add earth tone tint and darken video for text readability */
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Overlay to add earth tone tint and darken for text readability */
   .hero-video-overlay {
     position: absolute;
     top: 0;
@@ -59,24 +59,17 @@
     height: 100%;
     background: linear-gradient(
       135deg,
-      rgba(212, 165, 116, 0.3) 0%,
-      rgba(62, 39, 35, 0.5) 50%,
-      rgba(156, 175, 136, 0.2) 100%
+      rgba(212, 165, 116, 0.4) 0%,
+      rgba(62, 39, 35, 0.6) 50%,
+      rgba(156, 175, 136, 0.3) 100%
     );
     z-index: 2;
     pointer-events: none;
   }
 
-  /* Ensure content stays above video */
+  /* Ensure content stays above background */
   :global(.hero-content) {
     position: relative;
     z-index: 10;
-  }
-
-  @media (max-width: 1024px) {
-    .hero-video {
-      width: 120%;
-      height: 120%;
-    }
   }
 </style>
