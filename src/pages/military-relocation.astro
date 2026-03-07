@@ -1,0 +1,320 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ValueProp from '../components/ValueProp.astro';
+import CTAButton from '../components/CTAButton.astro';
+---
+
+<BaseLayout title="Military Relocation Services - Jamie Lowe Real Estate">
+  <Hero>
+    <h1>Military Relocation Services</h1>
+    <p>Expert assistance for military families relocating to San Antonio</p>
+  </Hero>
+
+  <section class="container py-3xl mt-3xl">
+    <h2>PCS? We've Got You Covered</h2>
+    <p>
+      Relocating with military orders can be stressful. As a military veteran, I understand the unique challenges of military life and PCS moves. I'm committed to making your relocation to San Antonio as smooth and hassle-free as possible.
+    </p>
+
+    <div class="grid grid-cols-3 mt-2xl">
+      <div class="feature-box">
+        <div class="feature-emoji">🎖️</div>
+        <h3>Military Veteran</h3>
+        <p>I understand military culture, terminology, and the PCS process firsthand.</p>
+      </div>
+      <div class="feature-box">
+        <div class="feature-emoji">💼</div>
+        <h3>Employer Benefits</h3>
+        <p>Knowledge of military benefits, BAH calculations, and relocation assistance programs.</p>
+      </div>
+      <div class="feature-box">
+        <div class="feature-emoji">👨‍👩‍👧‍👦</div>
+        <h3>Family First</h3>
+        <p>Understand the needs of military families during transitions.</p>
+      </div>
+      <div class="feature-box">
+        <div class="feature-emoji">🏫</div>
+        <h3>Schools & Communities</h3>
+        <p>Guidance on military-friendly schools and neighborhoods for your family.</p>
+      </div>
+      <div class="feature-box">
+        <div class="feature-emoji">🛠️</div>
+        <h3>Full Service</h3>
+        <p>Comprehensive support from initial consultation through closing.</p>
+      </div>
+      <div class="feature-box">
+        <div class="feature-emoji">⚡</div>
+        <h3>Quick Turnaround</h3>
+        <p>Efficient process to meet your PCS timeline and moving deadlines.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-light py-3xl mt-3xl">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 2rem;">Military Housing Programs</h2>
+      <div class="grid grid-cols-2">
+        <div class="program-card">
+          <h3>🏠 VA Loans</h3>
+          <p>
+            <strong>The Best Military Benefit:</strong> VA loans offer unbeatable advantages for eligible military members, veterans, and surviving spouses.
+          </p>
+          <ul>
+            <li>Zero down payment required</li>
+            <li>No PMI (mortgage insurance) - huge savings!</li>
+            <li>Competitive interest rates</li>
+            <li>Flexible credit requirements</li>
+            <li>Limited closing costs</li>
+          </ul>
+        </div>
+        <div class="program-card">
+          <h3>💰 BAH-Based Budgeting</h3>
+          <p>
+            <strong>Maximize Your BAH:</strong> Understanding your BAH (Basic Allowance for Housing) is key to smart home buying.
+          </p>
+          <ul>
+            <li>Calculate affordable home price</li>
+            <li>Factor in taxes and insurance</li>
+            <li>Plan for BAH variations by location</li>
+            <li>Build wealth through home equity</li>
+          </ul>
+        </div>
+        <div class="program-card">
+          <h3>🏘️ Military-Friendly Communities</h3>
+          <p>
+            <strong>Right Neighborhoods:</strong> San Antonio has excellent military-friendly areas with great schools and services.
+          </p>
+          <ul>
+            <li>Close proximity to bases</li>
+            <li>Excellent school districts</li>
+            <li>Military family networks</li>
+            <li>Community services and amenities</li>
+          </ul>
+        </div>
+        <div class="program-card">
+          <h3>📋 Relocation Assistance</h3>
+          <p>
+            <strong>Comprehensive Support:</strong> I handle all aspects of your military relocation.
+          </p>
+          <ul>
+            <li>Remote home searches and tours</li>
+            <li>Video tours and FaceTime showings</li>
+            <li>School information and community guides</li>
+            <li>Closing while deployed if necessary</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-3xl mt-3xl">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Why San Antonio is Perfect for Military Families</h2>
+    <div class="benefits-list">
+      <div class="benefit">
+        <h4>🎖️ Military Heritage</h4>
+        <p>San Antonio is home to Fort Sam Houston and Lackland Air Force Base, making it a true military community.</p>
+      </div>
+      <div class="benefit">
+        <h4>🏫 Excellent Schools</h4>
+        <p>Top-rated school districts with military family support programs and services.</p>
+      </div>
+      <div class="benefit">
+        <h4>💪 Strong Military Culture</h4>
+        <p>Military families everywhere - strong sense of community and understanding.</p>
+      </div>
+      <div class="benefit">
+        <h4>🌟 Cost of Living</h4>
+        <p>Affordable housing options compared to national average, perfect for military budgets.</p>
+      </div>
+      <div class="benefit">
+        <h4>🛑 Low Crime Military Areas</h4>
+        <p>Safe, family-friendly neighborhoods throughout North and East San Antonio.</p>
+      </div>
+      <div class="benefit">
+        <h4>🎉 Community Events</h4>
+        <p>Year-round military appreciation events, parades, and community gatherings.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-light py-3xl mt-3xl">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 2rem;">PCS Relocation Checklist</h2>
+      <div class="checklist">
+        <div class="checklist-item">
+          <input type="checkbox" id="item1" disabled>
+          <label for="item1">Receive PCS Orders and Review Details</label>
+        </div>
+        <div class="checklist-item">
+          <input type="checkbox" id="item2" disabled>
+          <label for="item2">Contact Jamie for Military Relocation Consultation</label>
+        </div>
+        <div class="checklist-item">
+          <input type="checkbox" id="item3" disabled>
+          <label for="item3">Research San Antonio Communities and Schools</label>
+        </div>
+        <div class="checklist-item">
+          <input type="checkbox" id="item4" disabled>
+          <label for="item4">Get Pre-Approved for VA or Other Loan Programs</label>
+        </div>
+        <div class="checklist-item">
+          <input type="checkbox" id="item5" disabled>
+          <label for="item5">Schedule Virtual Home Tours and Showings</label>
+        </div>
+        <div class="checklist-item">
+          <input type="checkbox" id="item6" disabled>
+          <label for="item6">Make Offer and Begin Inspection Process</label>
+        </div>
+        <div class="checklist-item">
+          <input type="checkbox" id="item7" disabled>
+          <label for="item7">Coordinate Timeline with PCS Move Date</label>
+        </div>
+        <div class="checklist-item">
+          <input type="checkbox" id="item8" disabled>
+          <label for="item8">Complete Final Walkthrough</label>
+        </div>
+        <div class="checklist-item">
+          <input type="checkbox" id="item9" disabled>
+          <label for="item9">Close on Your New Home</label>
+        </div>
+        <div class="checklist-item">
+          <input type="checkbox" id="item10" disabled>
+          <label for="item10">Welcome to San Antonio!</label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-3xl mt-3xl text-center">
+    <h2>Ready for Your PCS Move?</h2>
+    <p style="margin-bottom: 2rem;">Let's start your military relocation journey to San Antonio today</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <CTAButton href="/contact" variant="primary">Contact Me</CTAButton>
+      <CTAButton href="https://calendly.com/jamie-lowe" variant="secondary" target="_blank">Schedule Consultation</CTAButton>
+    </div>
+  </section>
+
+  <style>
+    .feature-box {
+      background-color: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-base);
+      text-align: center;
+    }
+
+    .feature-emoji {
+      font-size: 2rem;
+      margin-bottom: var(--spacing-base);
+    }
+
+    .feature-box h3 {
+      color: var(--primary);
+    }
+
+    .feature-box p {
+      color: var(--text-gray);
+      margin-bottom: 0;
+    }
+
+    .program-card {
+      background-color: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-base);
+    }
+
+    .program-card h3 {
+      color: var(--primary);
+      margin-bottom: var(--spacing-base);
+    }
+
+    .program-card ul {
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+    .program-card li {
+      margin-left: var(--spacing-lg);
+      position: relative;
+      padding-left: var(--spacing-lg);
+      color: var(--text-gray);
+    }
+
+    .program-card li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
+    .benefits-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-xl);
+    }
+
+    .benefit {
+      background-color: var(--bg-white);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-base);
+    }
+
+    .benefit h4 {
+      color: var(--primary);
+      margin-bottom: var(--spacing-base);
+    }
+
+    .benefit p {
+      color: var(--text-gray);
+      margin-bottom: 0;
+    }
+
+    .checklist {
+      background-color: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-base);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      padding: var(--spacing-base) 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .checklist-item:last-child {
+      border-bottom: none;
+    }
+
+    .checklist-item input[type="checkbox"] {
+      width: auto;
+      margin-right: var(--spacing-lg);
+      margin-bottom: 0;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    .checklist-item label {
+      margin-bottom: 0;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    @media (max-width: 768px) {
+      .grid-cols-2,
+      .grid-cols-3,
+      .benefits-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</BaseLayout>

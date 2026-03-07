@@ -1,0 +1,146 @@
+---
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h3>Jamie Lowe Real Estate</h3>
+        <p>Specializing in military relocation and new construction homes in San Antonio and surrounding areas.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/JamieLoweSalesAgent/" target="_blank" rel="noopener noreferrer" class="social-icon">f</a>
+          <a href="https://www.google.com/search?q=jamie+e+lowe+realtor" target="_blank" rel="noopener noreferrer" class="social-icon">G</a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Jamie</a></li>
+          <li><a href="/buyers">For Buyers</a></li>
+          <li><a href="/sellers">For Sellers</a></li>
+          <li><a href="/military-relocation">Military Relocation</a></li>
+          <li><a href="/new-construction">New Construction</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/communities">Communities</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="https://calendly.com/jamie-lowe" target="_blank" rel="noopener noreferrer">Schedule Consultation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <p><strong>Phone:</strong> <a href="tel:+17075925341">(707) 592-5341</a></p>
+        <p><strong>Email:</strong> <a href="mailto:jamie.lowe.real@gmail.com">jamie.lowe.real@gmail.com</a></p>
+        <p><strong>License:</strong> 756854</p>
+        <p><strong>Brokerage:</strong> Real Broker, LLC</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Jamie Lowe Real Estate. All rights reserved.</p>
+      <p>Licensed Real Estate Agent | Military Veteran | San Antonio, TX</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: linear-gradient(135deg, var(--text-dark) 0%, var(--accent-dark) 100%);
+    color: var(--bg-light);
+    padding: var(--spacing-4xl) var(--spacing-xl) var(--spacing-xl);
+    margin-top: var(--spacing-4xl);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-3xl);
+    margin-bottom: var(--spacing-3xl);
+  }
+
+  .footer-section h3,
+  .footer-section h4 {
+    color: var(--primary);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .footer-section p {
+    color: var(--bg-light);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-base);
+  }
+
+  .footer-section ul {
+    list-style: none;
+    margin-left: 0;
+  }
+
+  .footer-section li {
+    margin-bottom: var(--spacing-base);
+  }
+
+  .footer-section a {
+    color: var(--bg-light);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+    font-size: var(--font-size-sm);
+  }
+
+  .footer-section a:hover {
+    color: var(--primary);
+  }
+
+  .social-links {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+  }
+
+  .social-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary);
+    color: var(--bg-white);
+    border-radius: 50%;
+    font-weight: 700;
+    transition: background-color var(--transition-fast);
+  }
+
+  .social-icon:hover {
+    background-color: var(--primary-dark);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--spacing-xl);
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    color: var(--bg-light);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-2xl);
+    }
+
+    .footer {
+      padding: var(--spacing-2xl) var(--spacing-lg);
+    }
+  }
+</style>

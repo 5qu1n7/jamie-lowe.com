@@ -1,0 +1,131 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  publishDate?: string;
+  author?: string;
+}
+
+const { title, description, image, publishDate, author = "Jamie Lowe" } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} image={image}>
+  <article class="blog-post">
+    <header class="blog-post-header">
+      <div class="container">
+        <h1>{title}</h1>
+        {publishDate && <p class="publish-date">{new Date(publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>}
+        {author && <p class="author">By {author}</p>}
+      </div>
+    </header>
+
+    {image && (
+      <div class="blog-post-image">
+        <img src={image} alt={title} />
+      </div>
+    )}
+
+    <div class="blog-post-content container">
+      <slot />
+    </div>
+  </article>
+
+  <style>
+    .blog-post {
+      background-color: var(--bg-white);
+    }
+
+    .blog-post-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--bg-white);
+      padding: var(--spacing-4xl) var(--spacing-xl);
+      margin-bottom: var(--spacing-3xl);
+    }
+
+    .blog-post-header h1 {
+      color: var(--bg-white);
+      margin-bottom: var(--spacing-base);
+    }
+
+    .publish-date {
+      color: var(--bg-light);
+      font-size: var(--font-size-sm);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .author {
+      color: var(--bg-light);
+      font-size: var(--font-size-sm);
+    }
+
+    .blog-post-image {
+      margin-bottom: var(--spacing-3xl);
+      overflow: hidden;
+    }
+
+    .blog-post-image img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .blog-post-content {
+      max-width: 800px;
+      padding: var(--spacing-xl);
+    }
+
+    .blog-post-content :global(h2),
+    .blog-post-content :global(h3) {
+      margin-top: var(--spacing-2xl);
+    }
+
+    .blog-post-content :global(p) {
+      margin-bottom: var(--spacing-lg);
+      line-height: 1.8;
+    }
+
+    .blog-post-content :global(ul),
+    .blog-post-content :global(ol) {
+      margin-bottom: var(--spacing-xl);
+      margin-left: var(--spacing-2xl);
+    }
+
+    .blog-post-content :global(code) {
+      background-color: var(--bg-light);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-radius: var(--radius-base);
+      font-family: 'Courier New', monospace;
+      color: var(--accent);
+    }
+
+    .blog-post-content :global(pre) {
+      background-color: var(--text-dark);
+      color: var(--bg-white);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-lg);
+      overflow-x: auto;
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .blog-post-content :global(blockquote) {
+      border-left: 4px solid var(--primary);
+      padding-left: var(--spacing-lg);
+      margin: var(--spacing-xl) 0;
+      font-style: italic;
+      color: var(--text-gray);
+    }
+
+    @media (max-width: 768px) {
+      .blog-post-header {
+        padding: var(--spacing-2xl) var(--spacing-lg);
+      }
+
+      .blog-post-content {
+        padding: var(--spacing-lg);
+      }
+    }
+  </style>
+</BaseLayout>

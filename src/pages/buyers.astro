@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ValueProp from '../components/ValueProp.astro';
+import OneRealWidget from '../components/OneRealWidget.astro';
+import CalendlyEmbed from '../components/CalendlyEmbed.astro';
+import CTAButton from '../components/CTAButton.astro';
+---
+
+<BaseLayout title="Home Buyers Guide - Jamie Lowe Real Estate">
+  <Hero>
+    <h1>For Home Buyers</h1>
+    <p>Expert guidance through every step of the home buying process</p>
+  </Hero>
+
+  <section class="container py-3xl mt-3xl">
+    <h2>The Home Buying Journey</h2>
+    <p>
+      Whether you're a first-time buyer or an experienced homeowner, buying a home is one of the biggest decisions you'll make. I'm here to guide you through every step with expertise, honesty, and personalized attention.
+    </p>
+
+    <div class="grid grid-cols-4 mt-2xl" style="gap: 1.5rem;">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Get Pre-Approved</h3>
+        <p>Determine your budget and financing options</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Home Search</h3>
+        <p>Explore properties that match your needs</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Make an Offer</h3>
+        <p>Negotiate the best terms for your purchase</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <h3>Close the Deal</h3>
+        <p>Complete inspections and finalize your purchase</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-light py-3xl mt-3xl">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 2rem;">Why Work With Me as a Buyer?</h2>
+      <div class="grid grid-cols-3">
+        <ValueProp 
+          title="Market Expert" 
+          description="I know the San Antonio market inside and out, from pricing to neighborhoods."
+          icon="📊"
+        />
+        <ValueProp 
+          title="VA Loan Specialist" 
+          description="If you're military, I'll help maximize your VA loan benefits."
+          icon="💳"
+        />
+        <ValueProp 
+          title="Negotiator" 
+          description="I'll fight for the best price and terms for your home purchase."
+          icon="🤝"
+        />
+        <ValueProp 
+          title="Investor Friendly" 
+          description="Looking for investment properties? I'll help you find them."
+          icon="💰"
+        />
+        <ValueProp 
+          title="First-Time Buyer Friendly" 
+          description="I make the process easy and stress-free for first-time buyers."
+          icon="🏠"
+        />
+        <ValueProp 
+          title="Full Service" 
+          description="From search to closing, I handle everything."
+          icon="✅"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-3xl mt-3xl">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Find Your Home</h2>
+    <OneRealWidget />
+  </section>
+
+  <section class="bg-light py-3xl mt-3xl">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 2rem;">Understanding Your Financing</h2>
+      <div class="grid grid-cols-2">
+        <div class="financing-card">
+          <h3>VA Loans</h3>
+          <p>
+            VA loans are available to eligible veterans, active-duty military, and surviving spouses. They offer excellent benefits including no down payment, no PMI, and lower interest rates.
+          </p>
+          <ul>
+            <li>No down payment required</li>
+            <li>No PMI (mortgage insurance)</li>
+            <li>Competitive interest rates</li>
+            <li>Flexible qualification requirements</li>
+          </ul>
+        </div>
+        <div class="financing-card">
+          <h3>Conventional Loans</h3>
+          <p>
+            Traditional financing for buyers who don't qualify for VA loans or prefer conventional options.
+          </p>
+          <ul>
+            <li>Down payment options from 3-20%</li>
+            <li>Fixed or adjustable rates</li>
+            <li>Flexible loan terms</li>
+            <li>Wide range of programs</li>
+          </ul>
+        </div>
+        <div class="financing-card">
+          <h3>FHA Loans</h3>
+          <p>
+            Government-backed loans with lower credit requirements, making homeownership more accessible.
+          </p>
+          <ul>
+            <li>Lower down payment (3.5%)</li>
+            <li>Flexible credit requirements</li>
+            <li>Competitive interest rates</li>
+            <li>First-time buyer programs</li>
+          </ul>
+        </div>
+        <div class="financing-card">
+          <h3>USDA Loans</h3>
+          <p>
+            Available for rural and suburban properties, perfect for buyers looking outside the city.
+          </p>
+          <ul>
+            <li>Zero down payment</li>
+            <li>Low interest rates</li>
+            <li>No PMI required</li>
+            <li>Rural and suburban properties</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-3xl mt-3xl text-center">
+    <h2>Ready to Find Your Home?</h2>
+    <p style="margin-bottom: 2rem;">Let's start your home buying journey today</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <CTAButton href="/contact" variant="primary">Contact Me</CTAButton>
+      <CTAButton href="https://calendly.com/jamie-lowe" variant="secondary" target="_blank">Schedule Consultation</CTAButton>
+    </div>
+  </section>
+
+  <style>
+    .step-card {
+      background-color: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-base);
+      text-align: center;
+    }
+
+    .step-number {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: var(--bg-white);
+      border-radius: 50%;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--spacing-base);
+    }
+
+    .step-card h3 {
+      color: var(--text-dark);
+      margin-bottom: var(--spacing-base);
+    }
+
+    .step-card p {
+      color: var(--text-gray);
+      margin-bottom: 0;
+    }
+
+    .financing-card {
+      background-color: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-base);
+    }
+
+    .financing-card h3 {
+      color: var(--primary);
+    }
+
+    .financing-card ul {
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+    .financing-card li {
+      margin-left: var(--spacing-lg);
+      position: relative;
+      padding-left: var(--spacing-lg);
+    }
+
+    .financing-card li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .grid-cols-2,
+      .grid-cols-3,
+      .grid-cols-4 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</BaseLayout>

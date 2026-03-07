@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import CommunityMap from '../components/CommunityMap.astro';
+import CTAButton from '../components/CTAButton.astro';
+---
+
+<BaseLayout title="San Antonio Communities - Jamie Lowe Real Estate">
+  <Hero>
+    <h1>San Antonio Communities</h1>
+    <p>Explore military-friendly neighborhoods perfect for your family</p>
+  </Hero>
+
+  <section class="container py-3xl mt-3xl">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Community Map</h2>
+    <CommunityMap />
+  </section>
+
+  <section class="container py-3xl mt-3xl">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Featured Communities</h2>
+    <div class="grid grid-cols-2">
+      <div class="community-detail">
+        <h3>🏘️ North San Antonio</h3>
+        <h4>Schertz</h4>
+        <p>Growing family community with excellent schools, great schools (Schertz-Cibolo-Universal City ISD), new construction developments, and military appeal. Close to Fort Sam Houston with affordable housing and family-friendly amenities.</p>
+        <ul>
+          <li>Population: ~35,000</li>
+          <li>Average Home Price: Moderate</li>
+          <li>Schools: Excellent rated</li>
+          <li>Military Proximity: Close</li>
+          <li>New Construction: Abundant</li>
+        </ul>
+        <CTAButton href="/contact">Learn More</CTAButton>
+      </div>
+
+      <div class="community-detail">
+        <h3>🏘️ North San Antonio</h3>
+        <h4>Cibolo</h4>
+        <p>Rapidly growing community known for new construction homes, modern development, and family amenities. Excellent schools in the Schertz-Cibolo-Universal City ISD with strong military family presence and community programs.</p>
+        <ul>
+          <li>Population: ~35,000</li>
+          <li>Average Home Price: Moderate</li>
+          <li>Schools: Top-rated</li>
+          <li>Military Proximity: Close</li>
+          <li>New Construction: Excellent</li>
+        </ul>
+        <CTAButton href="/contact">Learn More</CTAButton>
+      </div>
+
+      <div class="community-detail">
+        <h3>🏘️ North San Antonio</h3>
+        <h4>Converse</h4>
+        <p>Affordable community with diverse housing options, strong military presence, and excellent schools. Great for military families on BAH budgets with friendly, welcoming neighborhoods and growing amenities.</p>
+        <ul>
+          <li>Population: ~25,000</li>
+          <li>Average Home Price: Affordable</li>
+          <li>Schools: Good to excellent</li>
+          <li>Military Proximity: Very close</li>
+          <li>New Construction: Growing</li>
+        </ul>
+        <CTAButton href="/contact">Learn More</CTAButton>
+      </div>
+
+      <div class="community-detail">
+        <h3>🏘️ East San Antonio</h3>
+        <h4>Live Oak</h4>
+        <p>Established community on San Antonio's East Side with excellent schools, established neighborhoods, and strong schools (North East ISD). Perfect for families seeking stability with great amenities and good value.</p>
+        <ul>
+          <li>Population: ~17,000</li>
+          <li>Average Home Price: Moderate</li>
+          <li>Schools: Top-rated</li>
+          <li>Military Proximity: Close</li>
+          <li>Community: Established</li>
+        </ul>
+        <CTAButton href="/contact">Learn More</CTAButton>
+      </div>
+
+      <div class="community-detail">
+        <h3>🏘️ North San Antonio</h3>
+        <h4>Bulverde</h4>
+        <p>Rural-suburban community with Hill Country charm, newer developments, and great schools (Comal ISD). Perfect for families wanting more space while maintaining close proximity to military installations and San Antonio amenities.</p>
+        <ul>
+          <li>Population: ~5,000</li>
+          <li>Average Home Price: Moderate to higher</li>
+          <li>Schools: Excellent</li>
+          <li>Military Proximity: Moderate</li>
+          <li>New Construction: Growing</li>
+        </ul>
+        <CTAButton href="/contact">Learn More</CTAButton>
+      </div>
+
+      <div class="community-detail">
+        <h3>🏘️ North San Antonio</h3>
+        <h4>Universal City</h4>
+        <p>Convenient North Side community with excellent schools, family amenities, and strong military presence. Known for good schools (SCUC ISD), safe neighborhoods, and great location near bases and San Antonio attractions.</p>
+        <ul>
+          <li>Population: ~19,000</li>
+          <li>Average Home Price: Moderate</li>
+          <li>Schools: Top-rated</li>
+          <li>Military Proximity: Very close</li>
+          <li>Community: Family-friendly</li>
+        </ul>
+        <CTAButton href="/contact">Learn More</CTAButton>
+      </div>
+
+      <div class="community-detail">
+        <h3>🏘️ North San Antonio</h3>
+        <h4>Spring Branch</h4>
+        <p>Northern community with newer developments and growing amenities. Hill Country proximity offers scenic beauty with good schools (Comal/Spring Branch ISD) and newer construction for families seeking growth areas.</p>
+        <ul>
+          <li>Population: ~700 (small unincorporated)</li>
+          <li>Average Home Price: Moderate</li>
+          <li>Schools: Good</li>
+          <li>Military Proximity: Moderate</li>
+          <li>New Construction: Available</li>
+        </ul>
+        <CTAButton href="/contact">Learn More</CTAButton>
+      </div>
+
+      <div class="community-detail">
+        <h3>🏘️ East San Antonio</h3>
+        <h4>San Antonio</h4>
+        <p>Downtown and urban neighborhoods with diverse options, walkable areas, and urban amenities. Perfect for those who want city living with easy access to military installations and San Antonio culture.</p>
+        <ul>
+          <li>Population: 1.5+ million</li>
+          <li>Average Home Price: Varies</li>
+          <li>Schools: Various districts</li>
+          <li>Military Proximity: Variable</li>
+          <li>Lifestyle: Urban</li>
+        </ul>
+        <CTAButton href="/contact">Learn More</CTAButton>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-light py-3xl mt-3xl">
+    <div class="container text-center">
+      <h2>Not Sure Which Community is Right for You?</h2>
+      <p style="margin-bottom: 2rem;">Let's discuss your family's needs and find the perfect community fit</p>
+      <CTAButton href="/contact" variant="primary">Schedule Consultation</CTAButton>
+    </div>
+  </section>
+
+  <style>
+    .community-detail {
+      background-color: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-base);
+    }
+
+    .community-detail h3 {
+      color: var(--primary);
+      margin-bottom: var(--spacing-base);
+    }
+
+    .community-detail h4 {
+      color: var(--secondary);
+      margin-bottom: var(--spacing-base);
+    }
+
+    .community-detail ul {
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .community-detail li {
+      margin-left: 0;
+      padding-left: 0;
+      color: var(--text-gray);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .community-detail li::before {
+      content: "•";
+      color: var(--primary);
+      font-weight: 700;
+      margin-right: var(--spacing-base);
+    }
+
+    @media (max-width: 768px) {
+      .grid-cols-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</BaseLayout>

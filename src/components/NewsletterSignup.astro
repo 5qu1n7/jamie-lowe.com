@@ -1,0 +1,69 @@
+---
+---
+
+<!-- Newsletter Signup via Brevo -->
+<div class="newsletter-signup">
+  <h3>Stay Updated</h3>
+  <p>Subscribe to get the latest listings and real estate insights</p>
+  
+  <form action="https://www.brevo.com/form/" method="POST" class="newsletter-form">
+    <input type="email" name="email" placeholder="Enter your email" required />
+    <button type="submit" class="btn btn-primary">Subscribe</button>
+  </form>
+</div>
+
+<style>
+  .newsletter-signup {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    padding: var(--spacing-2xl);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    color: var(--bg-white);
+    margin: var(--spacing-2xl) 0;
+  }
+
+  .newsletter-signup h3 {
+    color: var(--bg-white);
+    margin-bottom: var(--spacing-base);
+  }
+
+  .newsletter-signup p {
+    color: var(--bg-light);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: var(--spacing-base);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    padding: var(--spacing-base);
+    border: none;
+    border-radius: var(--radius-base);
+  }
+
+  .newsletter-form button {
+    padding: var(--spacing-base) var(--spacing-xl);
+    background-color: var(--accent);
+    color: var(--bg-white);
+    border: none;
+    border-radius: var(--radius-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+  }
+
+  .newsletter-form button:hover {
+    background-color: var(--accent-dark);
+  }
+
+  @media (max-width: 768px) {
+    .newsletter-form {
+      flex-direction: column;
+    }
+  }
+</style>

@@ -1,0 +1,276 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ValueProp from '../components/ValueProp.astro';
+import CTAButton from '../components/CTAButton.astro';
+---
+
+<BaseLayout title="New Construction Homes - Jamie Lowe Real Estate">
+  <Hero>
+    <h1>New Construction Homes</h1>
+    <p>Expert guidance for buying brand new homes in San Antonio</p>
+  </Hero>
+
+  <section class="container py-3xl mt-3xl">
+    <h2>Why Buy New Construction?</h2>
+    <p>
+      New construction homes offer unique advantages including modern features, builder warranties, energy efficiency, and the ability to customize. However, buying new construction requires specialized knowledge and expertise.
+    </p>
+
+    <div class="grid grid-cols-3 mt-2xl">
+      <ValueProp 
+        title="Modern Features" 
+        description="Latest technology, appliances, and smart home features included."
+        icon="🏗️"
+      />
+      <ValueProp 
+        title="Builder Warranty" 
+        description="Comprehensive warranty coverage for structural and mechanical systems."
+        icon="✅"
+      />
+      <ValueProp 
+        title="Energy Efficient" 
+        description="New homes meet current energy codes, reducing utility costs."
+        icon="⚡"
+      />
+      <ValueProp 
+        title="Customization" 
+        description="Select colors, finishes, and optional upgrades during construction."
+        icon="🎨"
+      />
+      <ValueProp 
+        title="No Surprises" 
+        description="Know exactly what you're getting with transparent pricing."
+        icon="📋"
+      />
+      <ValueProp 
+        title="Move-In Ready" 
+        description="No need for immediate repairs or renovations."
+        icon="🔑"
+      />
+    </div>
+  </section>
+
+  <section class="bg-light py-3xl mt-3xl">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 2rem;">The New Construction Process</h2>
+      <div class="grid grid-cols-4" style="gap: 1.5rem;">
+        <div class="process-step">
+          <div class="step-num">1</div>
+          <h3>Lot Selection</h3>
+          <p>Choose your lot and floor plan with builder options</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">2</div>
+          <h3>Customization</h3>
+          <p>Select colors, finishes, and optional upgrades</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">3</div>
+          <h3>Construction</h3>
+          <p>Monitor progress with periodic site visits and updates</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">4</div>
+          <h3>Walkthrough</h3>
+          <p>Final inspection before closing and move-in</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-3xl mt-3xl">
+    <h2 style="text-align: center; margin-bottom: 2rem;">New Construction Tips</h2>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <h3>📐 Understand Builder Contracts</h3>
+        <p>Builder contracts are different from resale homes. I'll review terms, inclusions, warranties, and contingencies to protect your interests.</p>
+      </div>
+      <div class="tip-card">
+        <h3>💰 Negotiate with Builders</h3>
+        <p>Builders have flexibility with incentives, upgrades, and pricing. Don't accept the first offer - negotiate!</p>
+      </div>
+      <div class="tip-card">
+        <h3>🔍 Monitor Construction</h3>
+        <p>Regular site visits ensure quality construction and identify any issues early for correction.</p>
+      </div>
+      <div class="tip-card">
+        <h3>✏️ Customize Wisely</h3>
+        <p>Not all upgrades add value. I'll advise on which customizations are worth the investment.</p>
+      </div>
+      <div class="tip-card">
+        <h3>📝 Final Walkthrough</h3>
+        <p>Walk through with a detailed checklist before closing to ensure everything is perfect.</p>
+      </div>
+      <div class="tip-card">
+        <h3>🛡️ Warranty Knowledge</h3>
+        <p>Understand your builder warranty coverage and what's included for future reference.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-light py-3xl mt-3xl">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 2rem;">New Construction Builders in San Antonio</h2>
+      <p style="text-align: center; margin-bottom: 2rem;">
+        I work with many reputable builders in the San Antonio area. Let me help you navigate the builder selection process and find the perfect new home.
+      </p>
+      <div class="grid grid-cols-2">
+        <div class="builder-info">
+          <h3>North San Antonio Builders</h3>
+          <p>Leading builders in Schertz, Cibolo, and surrounding North areas with excellent new construction communities and military-friendly neighborhoods.</p>
+        </div>
+        <div class="builder-info">
+          <h3>East San Antonio Builders</h3>
+          <p>Quality builders in the East Side with affordable options and great community amenities for growing families.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-3xl mt-3xl">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Common New Construction Mistakes to Avoid</h2>
+    <div class="mistakes-list">
+      <div class="mistake">
+        <h4>❌ Not Having a Real Estate Agent</h4>
+        <p>Builder agents represent the builder, not you. I represent your interests and can save you thousands in negotiations.</p>
+      </div>
+      <div class="mistake">
+        <h4>❌ Accepting First Offer</h4>
+        <p>Builders expect negotiation. There's usually room to move on price, incentives, and upgrades.</p>
+      </div>
+      <div class="mistake">
+        <h4>❌ Upgrading Everything</h4>
+        <p>Not all upgrades add value. I'll help you prioritize upgrades that truly enhance value and functionality.</p>
+      </div>
+      <div class="mistake">
+        <h4>❌ Skipping Inspections</h4>
+        <p>Even new homes need inspections. Builders are professional but mistakes happen. Catch them early.</p>
+      </div>
+      <div class="mistake">
+        <h4>❌ Not Monitoring Construction</h4>
+        <p>Regular site visits ensure quality work and allow time to address any issues before closing.</p>
+      </div>
+      <div class="mistake">
+        <h4>❌ Rushing the Final Walkthrough</h4>
+        <p>Take time to inspect everything in detail. This is your chance to catch defects before you own the home.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-3xl mt-3xl text-center">
+    <h2>Ready to Build Your Dream Home?</h2>
+    <p style="margin-bottom: 2rem;">Let me help you navigate the new construction buying process with expert guidance</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <CTAButton href="/contact" variant="primary">Contact Me</CTAButton>
+      <CTAButton href="https://calendly.com/jamie-lowe" variant="secondary" target="_blank">Schedule Consultation</CTAButton>
+    </div>
+  </section>
+
+  <style>
+    .process-step {
+      background-color: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-base);
+      text-align: center;
+    }
+
+    .step-num {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: var(--bg-white);
+      border-radius: 50%;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: var(--spacing-base);
+    }
+
+    .process-step h3 {
+      color: var(--text-dark);
+      margin-bottom: var(--spacing-base);
+    }
+
+    .process-step p {
+      color: var(--text-gray);
+      margin-bottom: 0;
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-xl);
+    }
+
+    .tip-card {
+      background-color: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-base);
+    }
+
+    .tip-card h3 {
+      color: var(--primary);
+      margin-bottom: var(--spacing-base);
+    }
+
+    .tip-card p {
+      color: var(--text-gray);
+      margin-bottom: 0;
+    }
+
+    .builder-info {
+      background-color: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-base);
+    }
+
+    .builder-info h3 {
+      color: var(--primary);
+      margin-bottom: var(--spacing-base);
+    }
+
+    .builder-info p {
+      color: var(--text-gray);
+      margin-bottom: 0;
+    }
+
+    .mistakes-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-xl);
+    }
+
+    .mistake {
+      background-color: rgba(244, 67, 54, 0.05);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-lg);
+      border-left: 4px solid #F44336;
+    }
+
+    .mistake h4 {
+      color: #F44336;
+      margin-bottom: var(--spacing-base);
+    }
+
+    .mistake p {
+      color: var(--text-gray);
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .grid-cols-2,
+      .grid-cols-3,
+      .grid-cols-4,
+      .tips-grid,
+      .mistakes-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</BaseLayout>

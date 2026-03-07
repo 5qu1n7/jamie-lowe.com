@@ -1,0 +1,56 @@
+---
+interface Props {
+  name: string;
+  quote: string;
+  role?: string;
+}
+
+const { name, quote, role } = Astro.props;
+---
+
+<div class="testimonial-card">
+  <div class="stars">★★★★★</div>
+  <p class="quote">"{quote}"</p>
+  <p class="name">- {name}</p>
+  {role && <p class="role">{role}</p>}
+</div>
+
+<style>
+  .testimonial-card {
+    padding: var(--spacing-xl);
+    background-color: var(--bg-white);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--primary);
+    box-shadow: var(--shadow-base);
+    transition: all var(--transition-base);
+  }
+
+  .testimonial-card:hover {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .stars {
+    color: #FFB800;
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-base);
+  }
+
+  .quote {
+    font-style: italic;
+    color: var(--text-gray);
+    margin-bottom: var(--spacing-base);
+    line-height: 1.8;
+  }
+
+  .name {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .role {
+    font-size: var(--font-size-sm);
+    color: var(--text-gray);
+    margin-bottom: 0;
+  }
+</style>

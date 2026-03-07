@@ -1,0 +1,46 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon?: string;
+}
+
+const { title, description, icon } = Astro.props;
+---
+
+<div class="value-prop">
+  {icon && <div class="icon">{icon}</div>}
+  <h3>{title}</h3>
+  <p>{description}</p>
+</div>
+
+<style>
+  .value-prop {
+    padding: var(--spacing-xl);
+    background-color: var(--bg-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-base);
+    transition: all var(--transition-base);
+    text-align: center;
+  }
+
+  .value-prop:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-base);
+  }
+
+  .value-prop h3 {
+    color: var(--primary);
+    margin-bottom: var(--spacing-base);
+  }
+
+  .value-prop p {
+    color: var(--text-gray);
+    margin-bottom: 0;
+  }
+</style>

@@ -1,0 +1,262 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ValueProp from '../components/ValueProp.astro';
+import CTAButton from '../components/CTAButton.astro';
+---
+
+<BaseLayout title="Home Sellers Guide - Jamie Lowe Real Estate">
+  <Hero>
+    <h1>For Home Sellers</h1>
+    <p>Sell your home with confidence and get the best possible price</p>
+  </Hero>
+
+  <section class="container py-3xl mt-3xl">
+    <h2>Selling Your Home Successfully</h2>
+    <p>
+      Selling a home requires strategy, market knowledge, and expert marketing. I'll help you position your home for maximum appeal and value.
+    </p>
+
+    <div class="grid grid-cols-4 mt-2xl" style="gap: 1.5rem;">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Home Evaluation</h3>
+        <p>Accurate market analysis and pricing strategy</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Prepare to Sell</h3>
+        <p>Strategic tips to enhance your home's appeal</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Marketing</h3>
+        <p>Multi-channel marketing to reach qualified buyers</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <h3>Close the Sale</h3>
+        <p>Negotiate offers and finalize the transaction</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-light py-3xl mt-3xl">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 2rem;">Why Sell With Me?</h2>
+      <div class="grid grid-cols-3">
+        <ValueProp 
+          title="Market Knowledge" 
+          description="Comprehensive market analysis to price your home competitively."
+          icon="📊"
+        />
+        <ValueProp 
+          title="Professional Marketing" 
+          description="Beautiful listings with photos and virtual tours to attract buyers."
+          icon="📸"
+        />
+        <ValueProp 
+          title="Experienced Negotiator" 
+          description="I'll negotiate to get you the best price and terms."
+          icon="💼"
+        />
+        <ValueProp 
+          title="Military Buyer Network" 
+          description="Access to military families relocating to San Antonio."
+          icon="🎖️"
+        />
+        <ValueProp 
+          title="Full Service Support" 
+          description="Handle all aspects from listing to closing."
+          icon="✅"
+        />
+        <ValueProp 
+          title="Local Expertise" 
+          description="Deep knowledge of San Antonio neighborhoods and communities."
+          icon="🏘️"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-3xl mt-3xl">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Selling Strategy</h2>
+    <div class="grid grid-cols-2">
+      <div class="strategy-card">
+        <h3>📋 Preparation Phase</h3>
+        <ul>
+          <li>Home evaluation and pricing</li>
+          <li>Home preparation recommendations</li>
+          <li>Professional photography and staging advice</li>
+          <li>Marketing strategy development</li>
+        </ul>
+      </div>
+      <div class="strategy-card">
+        <h3>📣 Marketing Phase</h3>
+        <ul>
+          <li>MLS listing and promotion</li>
+          <li>Social media marketing</li>
+          <li>Professional photography</li>
+          <li>Open houses and showings</li>
+        </ul>
+      </div>
+      <div class="strategy-card">
+        <h3>💰 Negotiation Phase</h3>
+        <ul>
+          <li>Offer evaluation and negotiation</li>
+          <li>Contingency management</li>
+          <li>Inspection coordination</li>
+          <li>Price optimization</li>
+        </ul>
+      </div>
+      <div class="strategy-card">
+        <h3>✅ Closing Phase</h3>
+        <ul>
+          <li>Appraisal coordination</li>
+          <li>Final walkthrough</li>
+          <li>Closing document preparation</li>
+          <li>Transaction completion</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-light py-3xl mt-3xl">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 2rem;">Home Selling Tips</h2>
+      <div class="tips-grid">
+        <div class="tip">
+          <h4>Enhance Curb Appeal</h4>
+          <p>First impressions matter. Fresh paint, landscaping, and a clean exterior can significantly increase interest.</p>
+        </div>
+        <div class="tip">
+          <h4>Declutter and Depersonalize</h4>
+          <p>Buyers want to imagine themselves in your home. Remove personal items and excess furniture.</p>
+        </div>
+        <div class="tip">
+          <h4>Professional Photography</h4>
+          <p>Quality photos showcase your home's best features and attract more online viewers.</p>
+        </div>
+        <div class="tip">
+          <h4>Price Competitively</h4>
+          <p>Research comparable homes in your area to ensure competitive pricing.</p>
+        </div>
+        <div class="tip">
+          <h4>Highlight Features</h4>
+          <p>Emphasize unique features like updated kitchen, new roof, or energy-efficient systems.</p>
+        </div>
+        <div class="tip">
+          <h4>Be Flexible</h4>
+          <p>Being flexible with showings and negotiations can lead to faster sales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-3xl mt-3xl text-center">
+    <h2>Ready to Sell?</h2>
+    <p style="margin-bottom: 2rem;">Let's discuss your home selling goals and create a winning strategy</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <CTAButton href="/contact" variant="primary">Contact Me</CTAButton>
+      <CTAButton href="https://calendly.com/jamie-lowe" variant="secondary" target="_blank">Schedule Consultation</CTAButton>
+    </div>
+  </section>
+
+  <style>
+    .step-card {
+      background-color: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-base);
+      text-align: center;
+    }
+
+    .step-number {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: var(--bg-white);
+      border-radius: 50%;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--spacing-base);
+    }
+
+    .step-card h3 {
+      color: var(--text-dark);
+      margin-bottom: var(--spacing-base);
+    }
+
+    .step-card p {
+      color: var(--text-gray);
+      margin-bottom: 0;
+    }
+
+    .strategy-card {
+      background-color: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-base);
+    }
+
+    .strategy-card h3 {
+      color: var(--primary);
+      margin-bottom: var(--spacing-base);
+    }
+
+    .strategy-card ul {
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+    .strategy-card li {
+      margin-left: var(--spacing-lg);
+      position: relative;
+      padding-left: var(--spacing-lg);
+      color: var(--text-gray);
+    }
+
+    .strategy-card li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-xl);
+    }
+
+    .tip {
+      background-color: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-base);
+    }
+
+    .tip h4 {
+      color: var(--primary);
+    }
+
+    .tip p {
+      color: var(--text-gray);
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .grid-cols-2,
+      .grid-cols-3,
+      .grid-cols-4,
+      .tips-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</BaseLayout>

@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import CTAButton from '../components/CTAButton.astro';
+---
+
+<BaseLayout title="About Jamie Lowe - San Antonio Real Estate Professional">
+  <Hero>
+    <h1>About Jamie Lowe</h1>
+    <p>Military Veteran & Real Estate Expert Serving San Antonio</p>
+  </Hero>
+
+  <section class="container py-3xl mt-3xl">
+    <div class="grid grid-cols-2">
+      <div>
+        <h2>Welcome to Jamie Lowe Real Estate</h2>
+        <p>
+          As a military veteran and dedicated real estate professional, I understand the unique challenges and opportunities that come with military life. Whether you're relocating due to a PCS move, buying your first home, or looking to sell your property, I'm here to guide you through every step of the process.
+        </p>
+        <p>
+          With expertise in VA loans, new construction purchases, and military relocation, I've helped hundreds of military families find their perfect home in the San Antonio area and beyond. My commitment is to provide personalized, professional service that treats every client like family.
+        </p>
+        <h3 style="margin-top: 2rem;">Key Credentials</h3>
+        <ul>
+          <li>Licensed Real Estate Agent - Texas License #756854</li>
+          <li>Brokered by Real Broker, LLC</li>
+          <li>VA Loan Specialist</li>
+          <li>New Construction Expert</li>
+          <li>Military Relocation Specialist</li>
+          <li>Military Veteran</li>
+        </ul>
+      </div>
+      <div class="about-image">
+        <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); padding: 3rem; border-radius: 1rem; text-align: center; color: white;">
+          <p style="font-size: 4rem; margin: 0;">🎖️</p>
+          <h3 style="color: white; margin-top: 1rem;">Jamie Lowe</h3>
+          <p style="color: var(--bg-light);">Real Estate Professional<br />Military Veteran</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-light py-3xl mt-3xl">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 2rem;">What Makes Me Different</h2>
+      <div class="grid grid-cols-3">
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Military Understanding</h3>
+          <p>As a military veteran, I understand military life, BAH rates, VA loans, and the challenges of PCS moves.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <h3>Personal Attention</h3>
+          <p>I treat every client like family. Your goals and needs come first, always.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📚</div>
+          <h3>Expert Knowledge</h3>
+          <p>Extensive experience with new construction, builder negotiations, and local market expertise.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-3xl mt-3xl">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Client Testimonials</h2>
+    <div class="grid grid-cols-3">
+      <TestimonialCard 
+        name="Chad Murray"
+        quote="If I could give more stars I would. Jamie went above and beyond every step of the way helping us to find and get into our new home. Jamie treated us like we were her family and ensured that even the smallest details weren't over looked."
+      />
+      <TestimonialCard 
+        name="Ricky Matthias"
+        quote="Jamie is the most professional, caring, and dependable realtor I have ever encountered. She will do everything that she possibly can to take care of your needs as a customer. Jamie is who you want for a realtor hands down."
+      />
+      <TestimonialCard 
+        name="Client"
+        quote="Professionalism, Responsiveness, Quality - Jamie delivered on all fronts. Highly recommend!"
+      />
+    </div>
+  </section>
+
+  <section class="bg-light py-3xl mt-3xl">
+    <div class="container text-center">
+      <h2>Ready to Work Together?</h2>
+      <p style="margin-bottom: 2rem;">Let's discuss your real estate goals and find the perfect solution for you.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center;">
+        <CTAButton href="/contact" variant="primary">Contact Me</CTAButton>
+        <CTAButton href="https://calendly.com/jamie-lowe" variant="secondary" target="_blank">Schedule Consultation</CTAButton>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .about-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-card {
+      background-color: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      box-shadow: var(--shadow-base);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: var(--spacing-base);
+    }
+
+    .feature-card h3 {
+      color: var(--primary);
+    }
+
+    .feature-card p {
+      color: var(--text-gray);
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .grid-cols-2,
+      .grid-cols-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</BaseLayout>

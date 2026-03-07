@@ -1,17 +1,237 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ValueProp from '../components/ValueProp.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import BlogCard from '../components/BlogCard.astro';
+import OneRealWidget from '../components/OneRealWidget.astro';
+import GoogleBusinessEmbed from '../components/GoogleBusinessEmbed.astro';
+import CTAButton from '../components/CTAButton.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Jamie Lowe Real Estate - San Antonio Military Specialist" description="Expert real estate services for military families, new construction, and San Antonio area properties">
+  <Hero>
+    <h1>Your Military Real Estate Expert in San Antonio</h1>
+    <p>Specializing in military relocation, VA loans, and new construction homes for military families</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <CTAButton href="/buyers" variant="primary">For Buyers</CTAButton>
+      <CTAButton href="/military-relocation" variant="secondary">Military Relocation</CTAButton>
+      <CTAButton href="/contact" variant="accent">Schedule Consultation</CTAButton>
+    </div>
+  </Hero>
+
+  <!-- Value Propositions -->
+  <section class="container py-3xl mt-3xl">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Why Choose Jamie Lowe?</h2>
+    <div class="grid grid-cols-3">
+      <ValueProp 
+        title="Military Veteran" 
+        description="As a military veteran, I understand the unique challenges and opportunities when relocating with your family."
+        icon="🎖️"
+      />
+      <ValueProp 
+        title="VA Loan Specialist" 
+        description="Expert knowledge of VA loans, military BAH, and specialized financing programs for service members."
+        icon="💰"
+      />
+      <ValueProp 
+        title="New Construction Expert" 
+        description="Extensive experience with new construction homes, builder negotiations, and inspections."
+        icon="🏗️"
+      />
+      <ValueProp 
+        title="San Antonio Expert" 
+        description="Deep knowledge of San Antonio and surrounding military-friendly communities."
+        icon="📍"
+      />
+      <ValueProp 
+        title="Dedicated Support" 
+        description="Personalized attention throughout the entire buying or selling process."
+        icon="👥"
+      />
+      <ValueProp 
+        title="Award-Winning Service" 
+        description="Trusted by military families and recognized for exceptional client service."
+        icon="⭐"
+      />
+    </div>
+  </section>
+
+  <!-- Property Search -->
+  <section class="bg-light py-3xl mt-3xl">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 2rem;">Search Available Properties</h2>
+      <OneRealWidget />
+    </div>
+  </section>
+
+  <!-- Quick Links -->
+  <section class="container py-3xl mt-3xl">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Our Services</h2>
+    <div class="grid grid-cols-2">
+      <div class="service-card">
+        <h3>For Home Buyers</h3>
+        <p>Whether you're a first-time buyer or experienced homeowner, we guide you through every step of the purchasing process with expertise and care.</p>
+        <CTAButton href="/buyers">Learn More</CTAButton>
+      </div>
+      <div class="service-card">
+        <h3>For Home Sellers</h3>
+        <p>Market your home effectively and get the best possible price with our comprehensive selling strategy.</p>
+        <CTAButton href="/sellers">Learn More</CTAButton>
+      </div>
+      <div class="service-card">
+        <h3>Military Relocation</h3>
+        <p>PCS moving to San Antonio? We specialize in military relocations and understand military life.</p>
+        <CTAButton href="/military-relocation">Learn More</CTAButton>
+      </div>
+      <div class="service-card">
+        <h3>New Construction</h3>
+        <p>Expert guidance on new construction purchases, from selecting the right builder to final walkthrough.</p>
+        <CTAButton href="/new-construction">Learn More</CTAButton>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Communities -->
+  <section class="bg-light py-3xl mt-3xl">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 2rem;">Featured Communities</h2>
+      <p style="text-align: center; margin-bottom: 2rem;">Explore military-friendly neighborhoods in the San Antonio area</p>
+      <div class="grid grid-cols-4">
+        <div class="community-card">
+          <h4>Schertz</h4>
+          <p>North San Antonio community with excellent schools and military appeal</p>
+        </div>
+        <div class="community-card">
+          <h4>Cibolo</h4>
+          <p>Growing family-friendly community with new construction developments</p>
+        </div>
+        <div class="community-card">
+          <h4>Converse</h4>
+          <p>Affordable options with close proximity to military installations</p>
+        </div>
+        <div class="community-card">
+          <h4>Live Oak</h4>
+          <p>East San Antonio gem with established neighborhoods and good schools</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem;">
+        <CTAButton href="/communities">View All Communities</CTAButton>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="container py-3xl mt-3xl">
+    <h2 style="text-align: center; margin-bottom: 2rem;">What Clients Say</h2>
+    <div class="grid grid-cols-3">
+      <TestimonialCard 
+        name="John Gilbert"
+        quote="Thank goodness for Jamie! We had to purchase our home from afar, which is a daunting task, but Jamie made it a dream. She went out of her way to find the perfect home for us. We decided on a new build, and throughout the whole building process, Jamie sent updated videos and pictures to show us the progress."
+      />
+      <TestimonialCard 
+        name="Mitchell Polu"
+        quote="Caring, honest, fair and hardworking! This is our 4th house purchase due to military obligations with moves and by far was the best representation on our behalf as buyers. Jamie will do all she can to get the best outcome for you as a client."
+      />
+      <TestimonialCard 
+        name="Guinness Gascon"
+        quote="Jamie Lowe is definitely one of the most hard working, caring, and knowledgeable realtor me and my wife had work with. She made buying a house such a breeze!"
+      />
+    </div>
+  </section>
+
+  <!-- Blog Preview -->
+  <section class="bg-light py-3xl mt-3xl">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 2rem;">Latest Blog Posts</h2>
+      <div class="grid grid-cols-3">
+        <BlogCard 
+          title="Military Home Buyer's Guide to San Antonio"
+          excerpt="Everything military families need to know about buying a home in San Antonio, from VA loans to BAH budgeting."
+          slug="military-buyers-guide"
+          date="2026-03-07"
+        />
+        <BlogCard 
+          title="VA Loans in Texas: Everything Military Home Buyers Need to Know"
+          excerpt="A comprehensive guide to VA loans, eligibility requirements, and how to maximize this military benefit."
+          slug="va-loans-explained"
+          date="2026-03-06"
+        />
+        <BlogCard 
+          title="Military-Friendly Communities in North San Antonio"
+          excerpt="Discover the best neighborhoods for military families in North San Antonio with excellent schools and amenities."
+          slug="military-communities-north"
+          date="2026-03-05"
+        />
+      </div>
+      <div style="text-align: center; margin-top: 2rem;">
+        <CTAButton href="/blog">View All Articles</CTAButton>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="container mt-3xl">
+    <NewsletterSignup />
+  </section>
+
+  <!-- Google Business -->
+  <section class="container py-3xl mt-3xl">
+    <GoogleBusinessEmbed />
+  </section>
+
+  <style>
+    .service-card {
+      background-color: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-base);
+      transition: all var(--transition-base);
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .service-card h3 {
+      color: var(--primary);
+    }
+
+    .service-card p {
+      color: var(--text-gray);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .community-card {
+      background-color: var(--bg-white);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-base);
+      text-align: center;
+    }
+
+    .community-card h4 {
+      color: var(--primary);
+      margin-bottom: var(--spacing-base);
+    }
+
+    .community-card p {
+      font-size: var(--font-size-sm);
+      color: var(--text-gray);
+    }
+
+    .bg-light {
+      background-color: var(--bg-light);
+    }
+
+    @media (max-width: 768px) {
+      .grid-cols-2,
+      .grid-cols-3,
+      .grid-cols-4 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</BaseLayout>

@@ -1,0 +1,67 @@
+---
+---
+
+<section class="hero" style="background-image: url('/hero-bg.jpg')">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .hero {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: var(--spacing-4xl) var(--spacing-xl);
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(62, 39, 35, 0.5);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    color: var(--bg-white);
+    text-align: center;
+  }
+
+  .hero-content :global(h1) {
+    color: var(--bg-white);
+    font-size: var(--font-size-5xl);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .hero-content :global(p) {
+    color: var(--bg-light);
+    font-size: var(--font-size-lg);
+    max-width: 600px;
+    margin: 0 auto var(--spacing-2xl);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 300px;
+      padding: var(--spacing-2xl) var(--spacing-lg);
+    }
+
+    .hero-content :global(h1) {
+      font-size: var(--font-size-3xl);
+    }
+
+    .hero-content :global(p) {
+      font-size: var(--font-size-base);
+    }
+  }
+</style>

@@ -1,0 +1,47 @@
+---
+---
+
+<script is:inline src="https://www.gstatic.com/dialogflow-js/releases/v2/google-cloud-dialogflow-es-release.js"></script>
+
+<div id="landbot-container" style="width: 100%; height: 100%;"></div>
+
+<script is:inline>
+  const dfMessenger = document.createElement('script');
+  dfMessenger.src = 'https://www.gstatic.com/dialogflow-js/releases/v2/google-cloud-dialogflow-es-release.js';
+  document.head.appendChild(dfMessenger);
+
+  // Alternative: Use Landbot embed code
+  const landbotScript = document.createElement('script');
+  landbotScript.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.js';
+  document.head.appendChild(landbotScript);
+
+  landbotScript.onload = () => {
+    window.myLandbot = new Landbot.Lib({
+      configUrl: 'https://storage.googleapis.com/landbot.pro/v3/H-XXXXXXXXXX-00000000-0000-0000-0000-000000000000/index.json',
+      container: '#landbot-container',
+    });
+  };
+</script>
+
+<style>
+  #landbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 400px;
+    height: 600px;
+    z-index: 9999;
+    border-radius: 12px;
+    box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16);
+  }
+
+  @media (max-width: 768px) {
+    #landbot-container {
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      right: 0;
+      border-radius: 0;
+    }
+  }
+</style>

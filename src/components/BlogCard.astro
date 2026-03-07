@@ -1,0 +1,96 @@
+---
+interface Props {
+  title: string;
+  excerpt: string;
+  slug: string;
+  date: string;
+  image?: string;
+}
+
+const { title, excerpt, slug, date, image = '/blog-default.jpg' } = Astro.props;
+---
+
+<article class="blog-card">
+  {image && (
+    <div class="blog-card-image">
+      <img src={image} alt={title} />
+    </div>
+  )}
+  <div class="blog-card-content">
+    <span class="blog-date">{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+    <h3><a href={`/blog/${slug}`}>{title}</a></h3>
+    <p>{excerpt}</p>
+    <a href={`/blog/${slug}`} class="read-more">Read More →</a>
+  </div>
+</article>
+
+<style>
+  .blog-card {
+    background-color: var(--bg-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-base);
+    transition: all var(--transition-base);
+  }
+
+  .blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .blog-card-image {
+    overflow: hidden;
+    height: 200px;
+  }
+
+  .blog-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .blog-card:hover .blog-card-image img {
+    transform: scale(1.05);
+  }
+
+  .blog-card-content {
+    padding: var(--spacing-xl);
+  }
+
+  .blog-date {
+    color: var(--primary);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+  }
+
+  .blog-card h3 {
+    margin: var(--spacing-base) 0;
+  }
+
+  .blog-card h3 a {
+    color: var(--text-dark);
+    text-decoration: none;
+  }
+
+  .blog-card h3 a:hover {
+    color: var(--primary);
+  }
+
+  .blog-card p {
+    color: var(--text-gray);
+    margin-bottom: var(--spacing-base);
+  }
+
+  .read-more {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform var(--transition-fast);
+  }
+
+  .read-more:hover {
+    transform: translateX(5px);
+  }
+</style>

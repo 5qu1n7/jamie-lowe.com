@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ContactForm from '../components/ContactForm.astro';
+import CalendlyEmbed from '../components/CalendlyEmbed.astro';
+---
+
+<BaseLayout title="Contact Jamie Lowe - Real Estate Professional">
+  <Hero>
+    <h1>Get In Touch</h1>
+    <p>Let's discuss your real estate goals</p>
+  </Hero>
+
+  <section class="container py-3xl mt-3xl">
+    <div class="grid grid-cols-2">
+      <div>
+        <h2>Contact Information</h2>
+        <div class="contact-item">
+          <h4>📞 Phone</h4>
+          <p><a href="tel:+17075925341">(707) 592-5341</a></p>
+        </div>
+        <div class="contact-item">
+          <h4>✉️ Email</h4>
+          <p><a href="mailto:jamie.lowe.real@gmail.com">jamie.lowe.real@gmail.com</a></p>
+        </div>
+        <div class="contact-item">
+          <h4>🏢 Brokerage</h4>
+          <p>Real Broker, LLC</p>
+        </div>
+        <div class="contact-item">
+          <h4>📜 License</h4>
+          <p>Texas License #756854</p>
+        </div>
+        <div class="contact-item">
+          <h4>📍 Service Area</h4>
+          <p>San Antonio, North San Antonio (Schertz, Cibolo, Converse), East San Antonio (Live Oak, Spring Branch), and surrounding areas</p>
+        </div>
+      </div>
+
+      <div>
+        <h2>Send a Message</h2>
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-light py-3xl mt-3xl">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 2rem;">Schedule a Consultation</h2>
+      <p style="text-align: center; margin-bottom: 2rem;">Choose a time that works best for you</p>
+      <CalendlyEmbed />
+    </div>
+  </section>
+
+  <style>
+    .contact-item {
+      background-color: var(--bg-white);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--spacing-lg);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-item h4 {
+      color: var(--primary);
+      margin-bottom: var(--spacing-base);
+      margin-top: 0;
+    }
+
+    .contact-item p {
+      color: var(--text-gray);
+      margin-bottom: 0;
+    }
+
+    .contact-item a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .grid-cols-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</BaseLayout>
