@@ -1,0 +1,244 @@
+---
+---
+
+<div class="hero-slideshow-container">
+  <!-- Slideshow slides -->
+  <div class="slideshow">
+    <!-- Video: Texas Hill Country -->
+    <div class="slide slide-video">
+      <video 
+        class="slide-media"
+        autoplay 
+        muted 
+        playsinline
+        preload="auto"
+      >
+        <source src="/hero-bg.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- Video: Kitchen -->
+    <div class="slide slide-video">
+      <video 
+        class="slide-media"
+        autoplay 
+        muted 
+        playsinline
+        preload="auto"
+      >
+        <source src="/hero-kitchen.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- Video: Living Room -->
+    <div class="slide slide-video">
+      <video 
+        class="slide-media"
+        autoplay 
+        muted 
+        playsinline
+        preload="auto"
+      >
+        <source src="/hero-livingroom.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- Images (3 seconds each) -->
+    <div class="slide slide-image">
+      <img class="slide-media" src="/hero-home1.jpg" alt="Beautiful home interior 1" />
+    </div>
+
+    <div class="slide slide-image">
+      <img class="slide-media" src="/hero-home2.jpg" alt="Beautiful home interior 2" />
+    </div>
+
+    <div class="slide slide-image">
+      <img class="slide-media" src="/hero-home3.jpg" alt="Beautiful home interior 3" />
+    </div>
+
+    <div class="slide slide-image">
+      <img class="slide-media" src="/hero-home4.jpg" alt="Beautiful home interior 4" />
+    </div>
+
+    <div class="slide slide-image">
+      <img class="slide-media" src="/hero-home5.jpg" alt="Beautiful home interior 5" />
+    </div>
+
+    <div class="slide slide-image">
+      <img class="slide-media" src="/hero-home6.jpg" alt="Beautiful home interior 6" />
+    </div>
+
+    <div class="slide slide-image">
+      <img class="slide-media" src="/hero-home7.jpg" alt="Beautiful home interior 7" />
+    </div>
+
+    <div class="slide slide-image">
+      <img class="slide-media" src="/hero-home8.jpg" alt="Beautiful home interior 8" />
+    </div>
+  </div>
+
+  <!-- Overlay gradient -->
+  <div class="hero-video-overlay"></div>
+</div>
+
+<script type="text/javascript">
+  (function() {
+    'use strict';
+
+    const slideshow = {
+      slides: [],
+      currentIndex: 0,
+      slideVideoDuration: {}, // Store video durations
+
+      init() {
+        this.slides = Array.from(document.querySelectorAll('.slide'));
+        if (this.slides.length === 0) return;
+
+        // Show first slide
+        this.showSlide(0);
+
+        // Start slideshow
+        this.nextSlide();
+      },
+
+      showSlide(index) {
+        // Hide all slides
+        this.slides.forEach((slide, i) => {
+          slide.classList.remove('active');
+        });
+
+        // Show current slide
+        if (this.slides[index]) {
+          this.slides[index].classList.add('active');
+          this.currentIndex = index;
+        }
+      },
+
+      nextSlide() {
+        const slide = this.slides[this.currentIndex];
+        if (!slide) return;
+
+        let delay = 3000; // Default 3 seconds for images
+
+        if (slide.classList.contains('slide-video')) {
+          const video = slide.querySelector('video');
+          if (video) {
+            // Get video duration in milliseconds
+            video.addEventListener(
+              'loadedmetadata',
+              () => {
+                delay = video.duration * 1000;
+                this.scheduleNext(delay);
+              },
+              { once: true }
+            );
+
+            // If metadata already loaded
+            if (video.readyState >= 1) {
+              delay = video.duration * 1000;
+              this.scheduleNext(delay);
+            } else {
+              // Fallback timeout
+              this.scheduleNext(delay);
+            }
+
+            // Ensure video plays
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+              playPromise.catch((err) => {
+                console.warn('⚠ Video autoplay blocked:', err.name);
+              });
+            }
+          }
+        } else {
+          // Image slides: 3 seconds
+          this.scheduleNext(3000);
+        }
+      },
+
+      scheduleNext(delay) {
+        setTimeout(() => {
+          const nextIndex = (this.currentIndex + 1) % this.slides.length;
+          this.showSlide(nextIndex);
+          this.nextSlide();
+        }, delay);
+      },
+    };
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => slideshow.init());
+    } else {
+      slideshow.init();
+    }
+  })();
+</script>
+
+<style>
+  .hero-slideshow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    background: linear-gradient(135deg, #d4a574 0%, #8b7355 100%);
+  }
+
+  .slideshow {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .slide.active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .slide-media {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .slide-video .slide-media {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba(212, 165, 116, 0.35) 0%,
+      rgba(62, 39, 35, 0.55) 50%,
+      rgba(156, 175, 136, 0.25) 100%
+    );
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  :global(.hero-content) {
+    position: relative;
+    z-index: 10;
+  }
+</style>

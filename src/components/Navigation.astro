@@ -119,9 +119,12 @@
     min-width: 200px;
     flex-direction: column;
     gap: 0;
+    /* Add gap between trigger and dropdown to prevent closing */
+    padding-top: var(--spacing-xs);
   }
 
-  .dropdown:hover .dropdown-menu {
+  .dropdown:hover .dropdown-menu,
+  .dropdown.open .dropdown-menu {
     display: flex;
   }
 
@@ -221,10 +224,27 @@
     navMenu?.classList.toggle('active');
   });
 
-  // Handle dropdown on mobile
+  // Handle dropdown on mobile and desktop
   const dropdowns = document.querySelectorAll('.dropdown');
+  let hoverTimeout;
+
   dropdowns.forEach(dropdown => {
     const toggle = dropdown.querySelector('.dropdown-toggle');
+    const menu = dropdown.querySelector('.dropdown-menu');
+
+    // Desktop: Use hover delay
+    dropdown.addEventListener('mouseenter', () => {
+      clearTimeout(hoverTimeout);
+      dropdown.classList.add('open');
+    });
+
+    dropdown.addEventListener('mouseleave', () => {
+      hoverTimeout = setTimeout(() => {
+        dropdown.classList.remove('open');
+      }, 300); // 300ms delay before closing
+    });
+
+    // Mobile: Toggle on click
     toggle?.addEventListener('click', (e) => {
       if (window.innerWidth <= 768) {
         e.preventDefault();
