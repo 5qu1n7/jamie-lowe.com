@@ -2,6 +2,31 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
 import BlogCard from '../../components/BlogCard.astro';
+
+// Import all blog posts from the current directory
+const posts = await Astro.glob('./*.astro');
+
+// Filter out index.astro and _drafts
+const publishedPosts = posts.filter(post => {
+  const pathname = post.file;
+  return !pathname.includes('index.astro') && !pathname.includes('_drafts');
+});
+
+// Extract frontmatter and create post objects
+const postsWithData = publishedPosts.map(post => {
+  const filename = post.file.split('/').pop()?.replace('.astro', '') || '';
+  return {
+    title: post.frontmatter.title,
+    description: post.frontmatter.description,
+    slug: filename,
+    date: post.frontmatter.pubDate,
+  };
+});
+
+// Sort by date (newest first)
+const sortedPosts = postsWithData.sort((a, b) => {
+  return new Date(b.date).getTime() - new Date(a.date).getTime();
+});
 ---
 
 <BaseLayout 
@@ -16,54 +41,14 @@ import BlogCard from '../../components/BlogCard.astro';
   <section class="container py-3xl mt-3xl">
     <h2 style="text-align: center; margin-bottom: 2rem;">Latest Articles</h2>
     <div class="grid grid-cols-3">
-      <BlogCard 
-        title="Military Home Buyer's Guide to San Antonio"
-        excerpt="Everything military families need to know about buying a home in San Antonio, from VA loans to BAH budgeting and community selection."
-        slug="military-buyers-guide"
-        date="2025-11-15"
-      />
-      <BlogCard 
-        title="VA Loans in Texas: Everything Military Home Buyers Need to Know"
-        excerpt="A comprehensive guide to VA loans, eligibility requirements, benefits, and how to maximize this incredible military benefit."
-        slug="va-loans-explained"
-        date="2025-10-22"
-      />
-      <BlogCard 
-        title="Military-Friendly Communities in North San Antonio"
-        excerpt="Discover the best neighborhoods for military families in North San Antonio with excellent schools and military amenities."
-        slug="military-communities-north"
-        date="2025-09-08"
-      />
-      <BlogCard 
-        title="Military-Friendly Communities in East San Antonio"
-        excerpt="Explore East San Antonio's military-friendly communities with established neighborhoods and great schools."
-        slug="military-communities-east"
-        date="2025-08-14"
-      />
-      <BlogCard 
-        title="New Construction vs. Existing Homes: A Military Family Buyer's Comparison"
-        excerpt="Understanding the pros and cons of new construction versus existing homes for military families in San Antonio."
-        slug="new-construction-vs-existing"
-        date="2025-07-03"
-      />
-      <BlogCard 
-        title="Understanding Your Military BAH: Home Buying Budget Planning"
-        excerpt="How to calculate your BAH, use it for home buying, and maximize your military housing benefit."
-        slug="bah-budgeting"
-        date="2025-05-19"
-      />
-      <BlogCard 
-        title="PCS Moving Checklist: San Antonio Edition"
-        excerpt="Complete checklist for military families relocating to San Antonio with timeline and important considerations."
-        slug="pcs-checklist"
-        date="2025-04-11"
-      />
-      <BlogCard 
-        title="Best School Districts for Military Families in San Antonio"
-        excerpt="Guide to top-rated school districts in San Antonio and surrounding military-friendly communities."
-        slug="schools-military-families"
-        date="2025-03-28"
-      />
+      {sortedPosts.map(post => (
+        <BlogCard 
+          title={post.title}
+          excerpt={post.description}
+          slug={post.slug}
+          date={post.date}
+        />
+      ))}
     </div>
   </section>
 
