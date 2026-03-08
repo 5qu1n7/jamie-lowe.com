@@ -22,10 +22,12 @@ import TestimonialCard from '../components/TestimonialCard.astro';
     </div>
 
     <div class="trust-badges">
-      <div class="trust-badge">
-        <span class="trust-icon">⭐</span>
-        <span class="trust-label">Google Reviews</span>
-      </div>
+      <a href="https://www.google.com/maps/place/Jamie+Lowe+-San+Antonio+TX+Real+Estate+Agent+and+military+veteran+brokered+by+REAL/@29.6556965,-98.5175415,9z/data=!3m1!4b1!4m6!3m5!1s0x865c430360c5ddaf:0x5379bd55f9b0e1db!8m2!3d29.6556966!4d-98.5175415!16s%2Fg%2F11rfdd0vn8?entry=ttu&g_ep=EgoyMDI2MDMwNC4xIKXMDSoASAFQAw%3D%3D" target="_blank" class="trust-badge-link">
+        <div class="trust-badge">
+          <span class="trust-icon">⭐</span>
+          <span class="trust-label">Google Reviews</span>
+        </div>
+      </a>
       <div class="trust-badge">
         <span class="trust-icon">🏠</span>
         <span class="trust-label">Zillow</span>
@@ -115,6 +117,14 @@ import TestimonialCard from '../components/TestimonialCard.astro';
       flex-direction: column;
       align-items: center;
       gap: var(--spacing-sm);
+    }
+
+    .trust-badge-link {
+      text-decoration: none;
+    }
+
+    .trust-badge-link:hover .trust-badge {
+      transform: scale(1.05);
     }
 
     .trust-icon {
