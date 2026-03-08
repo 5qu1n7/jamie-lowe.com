@@ -1,53 +1,34 @@
-// Optimized Chatbase initialization with lazy loading
-(function() {
-  const CHATBASE_ID = 'IYh1rK3jrU_ckVQlNpB7h';
-  let chatbaseLoaded = false;
-  let loadTimeout;
-
-  // Initialize chatbase queue
-  if (!window.chatbase) {
-    window.chatbase = function(...args) {
-      if (!window.chatbase.q) {
+// Chatbase initialization
+(function(){
+  if(!window.chatbase || window.chatbase("getState") !== "initialized"){
+    window.chatbase = (...args) => {
+      if(!window.chatbase.q){
         window.chatbase.q = [];
       }
       window.chatbase.q.push(args);
     };
+    window.chatbase = new Proxy(window.chatbase, {
+      get(target, prop){
+        if(prop === "q"){
+          return target.q;
+        }
+        return (...callArgs) => target(prop, ...callArgs);
+      }
+    });
   }
 
-  // Load chatbase script
-  function loadChatbase() {
-    if (chatbaseLoaded) return;
-    chatbaseLoaded = true;
-    clearTimeout(loadTimeout);
-
-    const script = document.createElement('script');
-    script.src = 'https://www.chatbase.co/embed.min.js';
-    script.id = CHATBASE_ID;
+  const onLoad = function(){
+    const script = document.createElement("script");
+    script.src = "https://www.chatbase.co/embed.min.js";
+    script.id = "IYh1rK3jrU_ckVQlNpB7h";
+    script.domain = "www.chatbase.co";
     script.async = true;
-    script.defer = true;
-    script.domain = 'www.chatbase.co';
-    document.head.appendChild(script);
-  }
+    document.body.appendChild(script);
+  };
 
-  // Load on page interaction (click, scroll, touch)
-  function setupLazyLoad() {
-    const events = ['click', 'scroll', 'touchstart', 'mousemove'];
-    
-    function onInteraction() {
-      loadChatbase();
-      events.forEach(event => document.removeEventListener(event, onInteraction));
-    }
-
-    events.forEach(event => document.addEventListener(event, onInteraction, { once: true }));
-
-    // Fallback: load after 5 seconds if no interaction
-    loadTimeout = setTimeout(loadChatbase, 5000);
-  }
-
-  // Start lazy loading when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupLazyLoad);
+  if(document.readyState === "complete"){
+    onLoad();
   } else {
-    setupLazyLoad();
+    window.addEventListener("load", onLoad);
   }
 })();
