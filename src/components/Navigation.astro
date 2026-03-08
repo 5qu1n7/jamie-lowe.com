@@ -57,75 +57,85 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--spacing-lg) var(--spacing-xl);
-    gap: var(--spacing-lg);
+    padding: 0.75rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
   }
 
   .logo {
-    flex: 0 0 auto;
     display: flex;
     align-items: center;
+    gap: 0.75rem;
   }
 
   .logo a {
     display: flex;
     align-items: center;
     text-decoration: none;
-    gap: var(--spacing-sm);
+    gap: 0.75rem;
   }
 
   .broker-logo {
-    height: 45px;
+    height: 40px;
     width: auto;
   }
 
   .logo-text-wrapper {
     display: flex;
     flex-direction: column;
+    line-height: 1.2;
   }
 
   .logo-text {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 800;
     color: var(--primary);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    line-height: 1.1;
+    letter-spacing: 0.03em;
   }
 
   .logo-subtitle {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--secondary);
     font-weight: 600;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 
   .nav-phone-container {
-    flex: 0 0 auto;
+    flex-shrink: 0;
   }
 
   .nav-phone {
     color: var(--primary) !important;
     font-weight: 600;
-    font-size: var(--font-size-sm);
+    font-size: 0.875rem;
     white-space: nowrap;
   }
 
   .nav-menu {
     display: flex;
-    list-style: none;
-    gap: var(--spacing-sm);
     align-items: center;
-    flex: 0 0 auto;
+    justify-content: flex-end;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0.25rem;
+  }
+
+  .nav-menu > li {
+    display: flex;
+    align-items: center;
   }
 
   .nav-menu a {
     color: var(--text-dark);
     font-weight: 500;
-    transition: color var(--transition-fast);
-    padding: var(--spacing-sm) var(--spacing-base);
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+    transition: color 0.2s;
+    white-space: nowrap;
   }
 
   .nav-menu a:hover {
@@ -133,13 +143,22 @@
     text-decoration: none;
   }
 
+  .nav-menu .btn {
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+  }
+
   .dropdown {
     position: relative;
   }
 
+  .dropdown-toggle {
+    cursor: pointer;
+  }
+
   .dropdown-toggle::after {
     content: ' ▼';
-    font-size: var(--font-size-xs);
+    font-size: 0.65rem;
     color: var(--text-gray);
   }
 
@@ -147,22 +166,20 @@
     display: none;
     position: absolute;
     top: 100%;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: var(--bg-white);
     list-style: none;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    margin-top: var(--spacing-base);
-    min-width: 200px;
-    flex-direction: column;
-    gap: 0;
-    /* Add gap between trigger and dropdown to prevent closing */
-    padding-top: var(--spacing-xs);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    min-width: 220px;
+    padding: 0.5rem 0;
+    z-index: 100;
   }
 
   .dropdown:hover .dropdown-menu,
   .dropdown.open .dropdown-menu {
-    display: flex;
+    display: block;
   }
 
   .dropdown-menu li {
@@ -171,9 +188,10 @@
 
   .dropdown-menu a {
     display: block;
-    padding: var(--spacing-base) var(--spacing-lg);
+    padding: 0.75rem 1.25rem;
     color: var(--text-dark);
-    border-bottom: 1px solid var(--border-color);
+    font-size: 0.875rem;
+    border-bottom: 1px solid #eee;
   }
 
   .dropdown-menu li:last-child a {
@@ -191,20 +209,47 @@
     background: none;
     border: none;
     cursor: pointer;
-    gap: var(--spacing-sm);
+    gap: 4px;
+    padding: 0.5rem;
   }
 
   .mobile-menu-toggle span {
-    width: 25px;
-    height: 3px;
+    width: 24px;
+    height: 2px;
     background-color: var(--text-dark);
-    border-radius: var(--radius-full);
-    transition: all var(--transition-fast);
+    border-radius: 2px;
+  }
+
+  @media (max-width: 1024px) {
+    .nav-container {
+      padding: 0.75rem 1rem;
+    }
+    
+    .nav-menu {
+      gap: 0;
+    }
+    
+    .nav-menu a {
+      padding: 0.5rem;
+      font-size: 0.8rem;
+    }
+    
+    .logo-text {
+      font-size: 1.2rem;
+    }
+    
+    .broker-logo {
+      height: 35px;
+    }
   }
 
   @media (max-width: 768px) {
     .mobile-menu-toggle {
       display: flex;
+    }
+
+    .nav-phone-container {
+      display: none;
     }
 
     .nav-menu {
@@ -215,40 +260,40 @@
       right: 0;
       flex-direction: column;
       background-color: var(--bg-white);
-      gap: 0;
-      padding: var(--spacing-lg) var(--spacing-xl);
-      box-shadow: var(--shadow-lg);
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .nav-menu.active {
       display: flex;
     }
 
-    .nav-menu li {
+    .nav-menu > li {
       width: 100%;
     }
 
     .nav-menu a {
       display: block;
-      padding: var(--spacing-base) 0;
-      border-bottom: 1px solid var(--border-color);
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .nav-menu .btn {
+      margin: 0.5rem 0;
+      text-align: center;
     }
 
     .dropdown-menu {
       position: static;
-      display: none;
+      transform: none;
       box-shadow: none;
-      margin-top: 0;
-      background-color: var(--bg-light);
+      background-color: #f5f5f5;
       border-radius: 0;
+      margin-top: 0;
     }
 
     .dropdown.active .dropdown-menu {
-      display: flex;
-    }
-
-    .dropdown-menu a {
-      padding-left: var(--spacing-2xl);
+      display: block;
     }
   }
 </style>
