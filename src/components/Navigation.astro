@@ -3,6 +3,10 @@
 
 <nav class="navbar">
   <div class="container nav-container">
+    <div class="nav-phone-container">
+      <a href="tel:+1-210-555-0123" class="nav-phone">📞 (210) 555-0123</a>
+    </div>
+    
     <div class="logo">
       <a href="/">
         <span class="logo-text">Jamie Lowe</span>
@@ -31,7 +35,6 @@
       <li><a href="/communities">Communities</a></li>
       <li><a href="/blog">Blog</a></li>
       <li><a href="/testimonials">Reviews</a></li>
-      <li><a href="tel:+1-210-555-0123" class="nav-phone">📞 (210) 555-0123</a></li>
       <li><a href="/contact" class="btn btn-primary">Contact</a></li>
     </ul>
   </div>
@@ -51,11 +54,25 @@
     justify-content: space-between;
     align-items: center;
     padding: var(--spacing-lg) var(--spacing-xl);
+    gap: var(--spacing-xl);
+  }
+
+  .nav-phone-container {
+    flex: 0 0 auto;
+  }
+
+  .nav-phone {
+    color: var(--primary) !important;
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    white-space: nowrap;
   }
 
   .logo {
+    flex: 1;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   .logo a {
@@ -96,11 +113,6 @@
   .nav-menu a:hover {
     color: var(--primary);
     text-decoration: none;
-  }
-
-  .nav-phone {
-    color: var(--primary) !important;
-    font-weight: 600;
   }
 
   .dropdown {
