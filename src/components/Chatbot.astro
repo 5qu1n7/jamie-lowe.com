@@ -3,8 +3,8 @@
 ---
 
 <script is:inline>
-  (function() {
-    // Initialize Chatbase
+  // Initialize Chatbase when DOM is ready
+  function initChatbase() {
     if (!window.chatbase) {
       window.chatbase = function(...args) {
         if (!window.chatbase.q) {
@@ -20,14 +20,28 @@
     script.id = 'IYh1rK3jrU_ckVQlNpB7h';
     script.domain = 'www.chatbase.co';
     script.async = true;
-    script.defer = true;
     document.body.appendChild(script);
-  })();
+  }
+  
+  // Wait for DOM to be ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initChatbase);
+  } else {
+    initChatbase();
+  }
 </script>
 
 <style>
   /* Ensure chatbot appears on top of other elements */
   :global(iframe[id*="chatbase"]) {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 9999 !important;
+  }
+  
+  /* Additional styling for chatbot button */
+  :global([data-chatbase-iframe]) {
     position: fixed !important;
     bottom: 20px !important;
     right: 20px !important;
