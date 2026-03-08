@@ -5,8 +5,11 @@
   <div class="container nav-container">
     <div class="logo">
       <a href="/">
-        <span class="logo-text">Jamie Lowe</span>
-        <span class="logo-subtitle">Real Estate</span>
+        <img src="/real-broker-logo.png" alt="Real Broker" class="broker-logo" />
+        <div class="logo-text-wrapper">
+          <span class="logo-text">Jamie Lowe</span>
+          <span class="logo-subtitle">Real Estate</span>
+        </div>
       </a>
     </div>
     
@@ -66,9 +69,19 @@
 
   .logo a {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     text-decoration: none;
+    gap: var(--spacing-base);
+  }
+
+  .broker-logo {
+    height: 50px;
+    width: auto;
+  }
+
+  .logo-text-wrapper {
+    display: flex;
+    flex-direction: column;
   }
 
   .logo-text {
