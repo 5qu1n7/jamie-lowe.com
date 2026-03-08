@@ -7,13 +7,18 @@ interface Props {
   image?: string;
 }
 
-const { title, excerpt, slug, date, image = '/blog-default.jpg' } = Astro.props;
+const { title, excerpt, slug, date, image } = Astro.props;
 ---
 
 <article class="blog-card">
   {image && (
     <div class="blog-card-image">
       <img src={image} alt={title} />
+    </div>
+  )}
+  {!image && (
+    <div class="blog-card-image">
+      <img src="/hero-img1.jpg" alt={title} />
     </div>
   )}
   <div class="blog-card-content">
