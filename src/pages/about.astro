@@ -11,7 +11,7 @@ import CTAButton from '../components/CTAButton.astro';
 >
   <Hero slideshow>
     <h1>About Jamie Lowe</h1>
-    <p>Military Veteran & Real Estate Expert Serving San Antonio</p>
+    <p>Master Sergeant, First Sergeant (Retired) - Military Veteran & Real Estate Expert Serving San Antonio</p>
   </Hero>
 
   <section class="container py-3xl mt-3xl">
@@ -31,15 +31,32 @@ import CTAButton from '../components/CTAButton.astro';
           <li>VA Loan Specialist</li>
           <li>New Construction Expert</li>
           <li>Military Relocation Specialist</li>
-          <li>Military Veteran</li>
+          <li>Master Sergeant, First Sergeant (Retired) - U.S. Air Force</li>
         </ul>
+        
+        <h3 style="margin-top: 2rem;">U.S. Air Force Ranks</h3>
+        <div class="ranks-grid">
+          <div class="rank-item"><span class="rank-enlisted">E-1</span><span>Airman Basic</span></div>
+          <div class="rank-item"><span class="rank-enlisted">E-2</span><span>Airman</span></div>
+          <div class="rank-item"><span class="rank-enlisted">E-3</span><span>Airman First Class</span></div>
+          <div class="rank-item"><span class="rank-enlisted">E-4</span><span>Senior Airman</span></div>
+          <div class="rank-item"><span class="rank-enlisted">E-5</span><span>Staff Sergeant</span></div>
+          <div class="rank-item"><span class="rank-enlisted">E-6</span><span>Technical Sergeant</span></div>
+          <div class="rank-item"><span class="rank-enlisted">E-7</span><span>Master Sergeant</span></div>
+          <div class="rank-item"><span class="rank-enlisted">E-8</span><span>Senior Master Sergeant</span></div>
+          <div class="rank-item"><span class="rank-enlisted">E-9</span><span>Chief Master Sergeant</span></div>
+          <div class="rank-item"><span class="rank-enlisted">E-9</span><span>Command Chief Master Sergeant</span></div>
+          <div class="rank-item"><span class="rank-enlisted">E-9</span><span>Chief Master Sergeant of the Air Force</span></div>
+        </div>
       </div>
+
       <div class="about-image">
         <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); padding: 3rem; border-radius: 1rem; text-align: center; color: white;">
           <p style="font-size: 4rem; margin: 0;">🎖️</p>
           <h3 style="color: white; margin-top: 1rem;">Jamie Lowe</h3>
-          <p style="color: var(--bg-light);">Real Estate Professional<br />Military Veteran</p>
+          <p style="color: var(--bg-light);">Master Sergeant, First Sergeant (Retired)<br />U.S. Air Force</p>
         </div>
+      </div>
       </div>
     </div>
   </section>
@@ -123,6 +140,33 @@ import CTAButton from '../components/CTAButton.astro';
     .feature-card p {
       color: var(--text-gray);
       margin-bottom: 0;
+    }
+
+    .ranks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-base);
+    }
+
+    .rank-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--spacing-sm);
+      background: var(--bg-light);
+      border-radius: var(--radius-base);
+    }
+
+    .rank-enlisted {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: var(--font-size-sm);
+    }
+
+    .rank-item span:last-child {
+      font-size: var(--font-size-xs);
+      color: var(--text-gray);
     }
 
     @media (max-width: 768px) {
