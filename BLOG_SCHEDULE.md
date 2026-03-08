@@ -11,22 +11,22 @@ This document outlines the automated blog publishing schedule for Jamie-Lowe.com
 
 ## Publishing Schedule
 
-### 2026 Blog Posts
+### 2027 Blog Posts
 
 | Date | Post Title | Filename | Status |
 |------|-----------|----------|--------|
-| Jan 8 | 2026 Military Family PCS Relocation Guide | `2026-01-08-pcs-relocation.astro` | ✅ Written |
-| Jan 22 | VA Loan Rate Trends 2026 | `2026-01-22-va-loan-rates.astro` | ✅ Written |
-| Feb 5 | Military BAH vs Buying: Financial Breakdown | `2026-02-05-bah-buying.astro` | ✅ Written |
-| Feb 18 | Spring Branch Real Estate: Military Family Guide | `2026-02-18-spring-branch.astro` | ✅ Written |
-| Mar 3 | New Construction vs Existing Homes for Military | `2026-03-03-new-vs-existing.astro` | ✅ Written |
-| Mar 25 | Best Schools in North San Antonio for Military | `2026-03-25-schools-north.astro` | ✅ Written |
-| Apr 7 | First-Time Home Buyer Guide: San Antonio 2026 | `2026-04-07-first-time-buyer.astro` | ✅ Written |
-| Apr 29 | Bulverde vs Schertz: Military Community Comparison | `2026-04-29-bulverde-schertz.astro` | ✅ Written |
-| May 12 | Home Inspection Checklist for Military Buyers | `2026-05-12-home-inspection.astro` | ✅ Written |
-| Jun 3 | Summer Home Buying Season: Timing Your Purchase | `2026-06-03-summer-buying.astro` | ✅ Written |
-| Jul 16 | Negotiating Offers Like a Pro: Real Estate Tips | `2026-07-16-negotiating.astro` | ✅ Written |
-| Aug 27 | New Construction Builders in San Antonio 2026 | `2026-08-27-builders.astro` | ✅ Written |
+| Mar 7 | 2027 Military Family PCS Relocation Guide | `2027-03-07-pcs-relocation.astro` | ✅ Written |
+| Mar 21 | VA Loan Rate Trends 2027 | `2027-03-21-va-loan-rates.astro` | ✅ Written |
+| Apr 4 | Military BAH vs Buying: Financial Breakdown | `2027-04-04-bah-buying.astro` | ✅ Written |
+| Apr 18 | Spring Branch Real Estate: Military Family Guide | `2027-04-18-spring-branch.astro` | ✅ Written |
+| May 2 | New Construction vs Existing Homes for Military | `2027-05-02-new-vs-existing.astro` | ✅ Written |
+| May 16 | Best Schools in North San Antonio for Military | `2027-05-16-schools-north.astro` | ✅ Written |
+| May 30 | First-Time Home Buyer Guide: San Antonio 2027 | `2027-05-30-first-time-buyer.astro` | ✅ Written |
+| Jun 13 | Bulverde vs Schertz: Military Community Comparison | `2027-06-13-bulverde-schertz.astro` | ✅ Written |
+| Jun 27 | Home Inspection Checklist for Military Buyers | `2027-06-27-home-inspection.astro` | ✅ Written |
+| Jul 11 | Summer Home Buying Season: Timing Your Purchase | `2027-07-11-summer-buying.astro` | ✅ Written |
+| Jul 25 | Negotiating Offers Like a Pro: Real Estate Tips | `2027-07-25-negotiating.astro` | ✅ Written |
+| Aug 8 | New Construction Builders in San Antonio 2027 | `2027-08-08-builders.astro` | ✅ Written |
 
 ## How It Works
 
