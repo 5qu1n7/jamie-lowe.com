@@ -52,16 +52,16 @@
 
   .nav-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: var(--spacing-lg) var(--spacing-xl);
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
   }
 
   .logo {
     flex: 0 0 auto;
     display: flex;
     align-items: center;
+    margin-right: var(--spacing-lg);
   }
 
   .logo a {
@@ -104,9 +104,10 @@
   .nav-menu {
     display: flex;
     list-style: none;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-md);
     align-items: center;
-    flex: 0 0 auto;
+    flex: 1;
+    justify-content: center;
   }
 
   .nav-menu a {
