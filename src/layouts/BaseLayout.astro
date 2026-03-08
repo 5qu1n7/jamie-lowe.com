@@ -2,7 +2,6 @@
 import '../styles/global.css';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
-import Chatbot from '../components/Chatbot.astro';
 
 interface Props {
   title: string;
@@ -118,6 +117,9 @@ const twitterHandle = "@jamielowerealtor";
     <!-- Leaflet.js for maps with SRI -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-wPSreed19nrD3cXwsPt44AhRtLeVwhqV86iZFY/XPgU6L82PheZRi+AftCIsqhmeYRSDsOivcAX2modeVmVQ1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha512-WXoSL2lrKOSIDIcsFvWMBMC8iFoco9Z2g2K0JnwNS7Lw8MR5j5wyY8qc3L4rKqKPSXqDFLhR/2BYsylRDMMkQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- Chatbase Widget -->
+    <script src="/chatbase.js"></script>
   </head>
   <body>
     <Navigation />
@@ -125,6 +127,5 @@ const twitterHandle = "@jamielowerealtor";
       <slot />
     </main>
     <Footer />
-    <Chatbot />
   </body>
 </html>

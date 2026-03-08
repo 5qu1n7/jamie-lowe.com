@@ -313,3 +313,30 @@ img {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-dark);
 }
+
+/* Chatbase Widget Styling */
+iframe[id*="chatbase"],
+[data-chatbase-iframe],
+[class*="chatbase"] {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  z-index: 9999 !important;
+  width: 400px !important;
+  height: 600px !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: 0 5px 40px rgba(0,0,0,0.16) !important;
+}
+
+@media (max-width: 600px) {
+  iframe[id*="chatbase"],
+  [data-chatbase-iframe],
+  [class*="chatbase"] {
+    width: 100% !important;
+    height: 100% !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    border-radius: 0 !important;
+  }
+}
