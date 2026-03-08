@@ -27,6 +27,14 @@ This document outlines the automated blog publishing schedule for Jamie-Lowe.com
 | Jul 25 | Summer Home Buying Season: Timing Your Purchase | `2026-07-25-summer-buying.astro` | ✅ Written |
 | Aug 8 | Negotiating Offers Like a Pro: Real Estate Tips | `2026-08-08-negotiating.astro` | ✅ Written |
 | Aug 22 | New Construction Builders in San Antonio 2026 | `2026-08-22-builders.astro` | ✅ Written |
+| Sep 5 | Fall Real Estate Market Predictions 2026 | `2026-09-05-fall-market.astro` | ✅ Written |
+| Sep 19 | Military Spouse Career Guide: San Antonio Opportunities | `2026-09-19-military-spouse-careers.astro` | ✅ Written |
+| Oct 3 | Mortgage Pre-Approval Process: Military Buyers Guide | `2026-10-03-mortgage-preapproval.astro` | ✅ Written |
+| Oct 17 | Home Staging Tips to Sell Your Military Home Fast | `2026-10-17-home-staging.astro` | ✅ Written |
+| Nov 1 | Year-End Home Buying Tax Benefits for Military | `2026-11-01-year-end-taxes.astro` | ✅ Written |
+| Nov 15 | Holiday Home Entertaining Guide: New Homeowner Edition | `2026-11-15-holiday-entertaining.astro` | ✅ Written |
+| Dec 3 | 2027 Real Estate Market Outlook for San Antonio | `2026-12-03-2027-outlook.astro` | ✅ Written |
+| Dec 17 | Military Relocation Year-End Checklist | `2026-12-17-year-end-relocation.astro` | ✅ Written |
 
 ## How It Works
 
