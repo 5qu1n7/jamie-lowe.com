@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import CTAButton from '../components/CTAButton.astro';
+---
+
+<BaseLayout 
+  title="Spring Branch & Bulverde Homes for Sale - Jamie Lowe Real Estate"
+  description="Search homes for sale in Spring Branch and Bulverde Texas. Military-friendly communities with excellent schools and natural beauty."
+>
+  <Hero slideshow>
+    <h1>Spring Branch & Bulverde Homes</h1>
+    <p>Find Your Perfect Home in These Beautiful Hill Country Communities</p>
+  </Hero>
+
+  <section class="container py-3xl">
+    <div class="listings-intro">
+      <h2 style="text-align: center; margin-bottom: 1rem;">Search Homes for Sale in Spring Branch & Bulverde</h2>
+      <p style="text-align: center; color: var(--text-gray); margin-bottom: 2rem;">
+        Explore available properties in these sought-after Hill Country communities. 
+        Click the button below to search all active listings.
+      </p>
+      
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <a href="https://onereal.com/jamie-lowe" target="_blank" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">
+          Search All Listings
+        </a>
+      </div>
+    </div>
+
+    <div class="communities-grid">
+      <div class="community-card">
+        <h3>Spring Branch</h3>
+        <p>Known for its natural beauty, Spring Branch offers a peaceful Hill Country lifestyle with easy access to San Antonio. Perfect for those seeking a quieter life while still being close to city amenities.</p>
+        <ul>
+          <li><strong>Population:</strong> ~200 residents</li>
+          <li><strong>Median Home Price:</strong> $500,000-$700,000</li>
+          <li><strong>Schools:</strong> Comal ISD</li>
+          <li><strong>Nearby Bases:</strong> ~30 miles from San Antonio</li>
+        </ul>
+      </div>
+
+      <div class="community-card">
+        <h3>Bulverde</h3>
+        <p>A growing community with small-town charm, Bulverde is popular with military families for its excellent schools, affordable housing, and family-friendly atmosphere.</p>
+        <ul>
+          <li><strong>Population:</strong> ~6,000 residents</li>
+          <li><strong>Median Home Price:</strong> $450,000-$650,000</li>
+          <li><strong>Schools:</strong> Comal ISD</li>
+          <li><strong>Nearby Bases:</strong> ~25 miles from San Antonio</li>
+        </ul>
+      </div>
+
+      <div class="community-card">
+        <h3>Why Military Families Love This Area</h3>
+        <ul>
+          <li>✓ Affordable compared to San Antonio proper</li>
+          <li>✓ Excellent Comal ISD schools</li>
+          <li>✓ Peaceful Hill Country living</li>
+          <li>✓ Easy commute to San Antonio bases</li>
+          <li>✓ Strong sense of community</li>
+          <li>✓ Plenty of outdoor activities</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem;">
+      <h3>Ready to Find Your Dream Home?</h3>
+      <p style="margin-bottom: 1.5rem;">Let me help you find the perfect property in Spring Branch or Bulverde.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <CTAButton href="/contact" variant="primary">Contact Jamie</CTAButton>
+        <a href="https://onereal.com/jamie-lowe" target="_blank" class="btn btn-secondary" style="padding: 0.75rem 1.5rem; border-radius: 0.5rem; background: var(--secondary); color: var(--bg-white); text-decoration: none;">
+          Search Listings
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .listings-intro {
+      margin-bottom: var(--spacing-3xl);
+    }
+
+    .communities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-xl);
+      margin-top: var(--spacing-2xl);
+    }
+
+    .community-card {
+      background: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-base);
+    }
+
+    .community-card h3 {
+      color: var(--primary);
+      margin-bottom: var(--spacing-base);
+    }
+
+    .community-card p {
+      color: var(--text-gray);
+      margin-bottom: var(--spacing-base);
+      line-height: 1.6;
+    }
+
+    .community-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .community-card li {
+      padding: var(--spacing-xs) 0;
+      color: var(--text-gray);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .community-card li:last-child {
+      border-bottom: none;
+    }
+
+    .community-card li strong {
+      color: var(--text-dark);
+    }
+
+    @media (max-width: 768px) {
+      .communities-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</BaseLayout>
