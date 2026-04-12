@@ -6,10 +6,13 @@ import BlogCard from '../../components/BlogCard.astro';
 // Use Astro.glob to get all blog posts
 const allPosts = import.meta.glob('./*.astro', { eager: true });
 
+console.log('All posts keys:', Object.keys(allPosts));
+
 const posts = Object.entries(allPosts)
   .filter(([path]) => !path.includes('index.astro'))
   .map(([path, mod]) => {
-    // Check if it has BlogLayout props
+    console.log('Processing:', path, 'mod type:', typeof mod, 'has frontmatter:', !!mod.frontmatter);
+    // Check if it has BlogLayout props - the file exports frontmatter from the BlogLayout component
     if (mod.frontmatter && mod.frontmatter.title) {
       return {
         slug: path.replace('./', '').replace('.astro', ''),
@@ -22,11 +25,10 @@ const posts = Object.entries(allPosts)
   })
   .filter(p => p !== null);
 
-const sortedPosts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-// Debug: log to console (will show in build logs)
-console.log('Posts found:', sortedPosts.length);
+console.log('Filtered posts:', posts.length);
 ---
+
+<!-- DEBUG: Posts count = {posts.length} -->
 
 <BaseLayout 
   title="Blog - Jamie Lowe Real Estate"
@@ -38,9 +40,11 @@ console.log('Posts found:', sortedPosts.length);
   </Hero>
 
   <section class="container py-3xl mt-3xl">
-    <h2 style="text-align: center; margin-bottom: 2rem;">Latest Articles ({sortedPosts.length} posts)</h2>
+    <h2 style="text-align: center; margin-bottom: 2rem;">Debug: Found {posts.length} posts</h2>
+    <pre style="max-width: 600px; overflow: auto; background: #f5f5f5; padding: 20px; margin: 20px auto;">{JSON.stringify(posts, null, 2)}</pre>
+    <h2 style="text-align: center; margin-bottom: 2rem;">Latest Articles</h2>
     <div class="grid grid-cols-3">
-      {sortedPosts.map(post => (
+      {posts.map(post => (
         <BlogCard 
           title={post.title}
           excerpt={post.description}
