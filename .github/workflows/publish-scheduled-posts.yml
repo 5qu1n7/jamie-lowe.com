@@ -5,6 +5,11 @@ on:
     # Run every day at 8 AM UTC
     - cron: '0 8 * * *'
   workflow_dispatch:
+    inputs:
+      publish_date:
+        description: 'Date to publish (YYYY-MM-DD). Leave empty for today.'
+        required: false
+        default: ''
 
 jobs:
   publish-scheduled:
@@ -19,14 +24,26 @@ jobs:
         with:
           node-version: '20'
       
+      - name: Determine date to publish
+        id: get_date
+        run: |
+          # Use input date if provided, otherwise use today's date
+          if [ -n "${{ github.event.inputs.publish_date }}" ]; then
+            PUBLISH_DATE="${{ github.event.inputs.publish_date }}"
+          else
+            PUBLISH_DATE=$(date +%Y-%m-%d)
+          fi
+          echo "publish_date=$PUBLISH_DATE" >> $GITHUB_OUTPUT
+          echo "Publishing posts for: $PUBLISH_DATE"
+      
       - name: Check for scheduled posts
         id: check_posts
         run: |
-          TODAY=$(date +%Y-%m-%d)
+          PUBLISH_DATE="${{ steps.get_date.outputs.publish_date }}"
           DRAFT_DIR="src/pages/blog/_drafts"
           
           if [ -d "$DRAFT_DIR" ]; then
-            POSTS=$(find "$DRAFT_DIR" -name "*$TODAY-*.astro" 2>/dev/null || true)
+            POSTS=$(find "$DRAFT_DIR" -name "*$PUBLISH_DATE-*.astro" 2>/dev/null || true)
             if [ -n "$POSTS" ]; then
               echo "found_posts=true" >> $GITHUB_OUTPUT
               echo "posts=$POSTS" >> $GITHUB_OUTPUT
@@ -40,23 +57,23 @@ jobs:
       - name: Publish posts and update index
         if: steps.check_posts.outputs.found_posts == 'true'
         run: |
+          PUBLISH_DATE="${{ steps.get_date.outputs.publish_date }}"
           DRAFT_DIR="src/pages/blog/_drafts"
-          TODAY=$(date +%Y-%m-%d)
           
-          for post in $(find "$DRAFT_DIR" -name "*$TODAY-*.astro" 2>/dev/null || true); do
+          for post in $(find "$DRAFT_DIR" -name "*$PUBLISH_DATE-*.astro" 2>/dev/null || true); do
             FILENAME=$(basename "$post")
             NEWNAME=$(echo "$FILENAME" | sed "s/[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}-//")
             mv "$post" "src/pages/blog/$NEWNAME"
             echo "Published: $NEWNAME"
             
-            # Extract title from BlogLayout component
+            # Extract title
             TITLE=$(grep -m1 "title=" "src/pages/blog/$NEWNAME" | head -1 | sed 's/.*title="\([^"]*\)".*/\1/' | tr -d '\n')
-            DATE=$(echo "$FILENAME" | grep -oE "^[0-9]{4}-[0-9]{2}-[0-9]{2}")
+            DATE=$PUBLISH_DATE
             
             # Extract description
             DESC=$(sed -n '/<BlogLayout/,/<\/BlogLayout/p' "src/pages/blog/$NEWNAME" 2>/dev/null | head -1 | sed 's/<[^>]*>//g' | xargs | head -c 150 | sed "s/\"/'/g")
             
-            # Add to blog list in index.astro (with date for sorting)
+            # Add to blog list in index.astro
             INDEX_FILE="src/pages/blog/index.astro"
             if [ -f "$INDEX_FILE" ]; then
               if ! grep -q "$TITLE" "$INDEX_FILE"; then
@@ -72,5 +89,5 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add src/pages/blog/
-          git commit -m "Publish scheduled blog posts for $(date +%Y-%m-%d)"
+          git commit -m "Publish scheduled blog posts for ${{ steps.get_date.outputs.publish_date }}"
           git push
