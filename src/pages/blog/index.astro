@@ -12,7 +12,7 @@ const posts = [
   { slug: 'new-construction-vs-existing', title: 'New Construction vs. Existing Homes: A Military Family Buyer', description: "Weighing the pros and cons of new construction vs. existing homes for military families.", date: '2025-07-10' },
   { slug: 'pcs-checklist', title: 'PCS Moving Checklist: San Antonio Edition', description: "Essential checklist for military families relocating to San Antonio.", date: '2025-06-20' },
   { slug: 'schools-military-families', title: 'Best School Districts for Military Families in San Antonio', description: "Find the best schools for military children in the San Antonio area.", date: '2025-04-12' },
-];
+].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 ---
 
 <BaseLayout 
