@@ -12,14 +12,16 @@ const files = fs.readdirSync(blogDir).filter(f => f.endsWith('.astro') && f !== 
 const posts = files.map(f => {
   const content = fs.readFileSync(path.join(blogDir.pathname, f), 'utf-8');
   
-  // Try to extract title from BlogLayout component first (e.g., title="...")
-  const blogLayoutMatch = content.match(/<BlogLayout[^>]*title=["']([^"']+)["']/);
+  // Try to extract title from BlogLayout component - more robust regex
+  const blogLayoutMatch = content.match(/<BlogLayout[^>]*title=["']([^"']+?)["']/);
   if (blogLayoutMatch) {
     const dateMatch = content.match(/publishDate=["']([^"']+)["']/);
+    // Also try to get description
+    const descMatch = content.match(/<BlogLayout[^>]*>[\s\S]*?<p[^>]*>([^<]+)/);
     return {
       slug: f.replace('.astro', ''),
       title: blogLayoutMatch[1],
-      description: '',
+      description: descMatch ? descMatch[1].substring(0, 100) + '...' : '',
       date: dateMatch ? dateMatch[1] : '2026-01-01',
     };
   }
