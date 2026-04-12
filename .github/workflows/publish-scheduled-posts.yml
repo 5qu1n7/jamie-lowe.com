@@ -79,13 +79,16 @@ jobs:
             # Extract description
             DESC=$(sed -n '/<BlogLayout/,/<\/BlogLayout/p' "src/pages/blog/$NEWNAME" 2>/dev/null | head -1 | sed 's/<[^>]*>//g' | xargs | head -c 150 | sed "s/\"/'/g")
             
-            echo "Title: $TITLE, Date: $DATE"
+            # Strip .astro extension for slug
+            SLUG=$(echo "$NEWNAME" | sed 's/\.astro$//')
+            
+            echo "Title: $TITLE, Date: $DATE, Slug: $SLUG"
             
             # Add to blog list in index.astro
             INDEX_FILE="src/pages/blog/index.astro"
             if [ -f "$INDEX_FILE" ]; then
               if ! grep -q "$TITLE" "$INDEX_FILE"; then
-                sed -i "s/const posts = \[/const posts = [\n  { slug: '$NEWNAME', title: \"$TITLE\", description: \"$DESC\", date: '$DATE' },/" "$INDEX_FILE"
+                sed -i "s/const posts = \[/const posts = [\n  { slug: '$SLUG', title: \"$TITLE\", description: \"$DESC\", date: '$DATE' },/" "$INDEX_FILE"
                 echo "Added $TITLE to blog index"
               fi
             fi
