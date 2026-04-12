@@ -18,13 +18,12 @@ const posts = files.map(f => {
   if (!frontmatterMatch) return null;
   
   const frontmatter = frontmatterMatch[1];
+  
+  // Handle both formats: BlogLayout and BaseLayout
   const titleMatch = frontmatter.match(/title:\s*['"]([^'"]+)['"]/);
   const descMatch = frontmatter.match(/description:\s*['"]([^'"]+)['"]/);
-  const dateMatch = frontmatter.match(/pubDate:\s*['"]([^'"]+)['"]/);
-  const layoutMatch = frontmatter.match(/layout:\s*['"]([^'"]+)['"]/);
-  
-  // Skip if it uses a different layout (these posts are full pages, not cards)
-  if (layoutMatch && layoutMatch[1].includes('BlogLayout')) return null;
+  const dateMatch = frontmatter.match(/publishDate:\s*['"]([^'"]+)['"]/) || 
+                    frontmatter.match(/pubDate:\s*['"]([^'"]+)['"]/);
   
   return {
     slug: f.replace('.astro', ''),
