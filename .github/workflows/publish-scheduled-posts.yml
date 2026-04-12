@@ -27,7 +27,7 @@ jobs:
           
           if [ -d "$DRAFT_DIR" ]; then
             # Find posts with filename matching today's date
-            POSTS=$(find "$DRAFT_DIR" -name "*-$TODAY-*.astro" 2>/dev/null || true)
+            POSTS=$(find "$DRAFT_DIR" -name "*$TODAY-*.astro" 2>/dev/null || true)
             if [ -n "$POSTS" ]; then
               echo "found_posts=true" >> $GITHUB_OUTPUT
               echo "posts=$POSTS" >> $GITHUB_OUTPUT
@@ -45,7 +45,7 @@ jobs:
           TODAY=$(date +%Y-%m-%d)
           
           # Move posts from _drafts to published
-          for post in $(find "$DRAFT_DIR" -name "*-$TODAY-*.astro" 2>/dev/null || true); do
+          for post in $(find "$DRAFT_DIR" -name "*$TODAY-*.astro" 2>/dev/null || true); do
             FILENAME=$(basename "$post")
             # Remove date prefix from filename (e.g., "2026-03-15-" becomes "")
             NEWNAME=$(echo "$FILENAME" | sed "s/[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}-//")
