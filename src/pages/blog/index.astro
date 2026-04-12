@@ -3,16 +3,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
 import BlogCard from '../../components/BlogCard.astro';
 
-// Use Astro.glob to get all blog posts
 const allPosts = import.meta.glob('./*.astro', { eager: true });
-
-console.log('All posts keys:', Object.keys(allPosts));
 
 const posts = Object.entries(allPosts)
   .filter(([path]) => !path.includes('index.astro'))
   .map(([path, mod]) => {
-    console.log('Processing:', path, 'mod type:', typeof mod, 'has frontmatter:', !!mod.frontmatter);
-    // Check if it has BlogLayout props - the file exports frontmatter from the BlogLayout component
     if (mod.frontmatter && mod.frontmatter.title) {
       return {
         slug: path.replace('./', '').replace('.astro', ''),
@@ -24,15 +19,22 @@ const posts = Object.entries(allPosts)
     return null;
   })
   .filter(p => p !== null);
-
-console.log('Filtered posts:', posts.length);
 ---
 
-<!-- DEBUG: Posts count = {posts.length} -->
+<!-- DEBUG START -->
+<div style="background: yellow; padding: 20px; margin: 20px;">
+  <h1 style="color: red;">DEBUG: Found {posts.length} posts</h1>
+  <ul>
+    {posts.map(p => (
+      <li><strong>{p.title}</strong> - {p.date}</li>
+    ))}
+  </ul>
+</div>
+<!-- DEBUG END -->
 
 <BaseLayout 
   title="Blog - Jamie Lowe Real Estate"
-  description="Expert insights on military relocation, home buying, VA loans, and San Antonio real estate. Tips for military families and first-time home buyers."
+  description="Expert insights on military relocation, home buying, VA loans, and San Antonio real estate."
 >
   <Hero slideshow>
     <h1>Blog</h1>
@@ -40,8 +42,6 @@ console.log('Filtered posts:', posts.length);
   </Hero>
 
   <section class="container py-3xl mt-3xl">
-    <h2 style="text-align: center; margin-bottom: 2rem;">Debug: Found {posts.length} posts</h2>
-    <pre style="max-width: 600px; overflow: auto; background: #f5f5f5; padding: 20px; margin: 20px auto;">{JSON.stringify(posts, null, 2)}</pre>
     <h2 style="text-align: center; margin-bottom: 2rem;">Latest Articles</h2>
     <div class="grid grid-cols-3">
       {posts.map(post => (
@@ -57,9 +57,7 @@ console.log('Filtered posts:', posts.length);
 
   <style>
     @media (max-width: 768px) {
-      .grid-cols-3 {
-        grid-template-columns: 1fr;
-      }
+      .grid-cols-3 { grid-template-columns: 1fr; }
     }
   </style>
 </BaseLayout>
