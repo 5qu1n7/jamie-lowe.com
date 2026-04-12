@@ -7,33 +7,42 @@ import path from 'node:path';
 
 const blogDir = new URL('../../pages/blog/', import.meta.url);
 
-// Read all .astro files in the blog directory
 const files = fs.readdirSync(blogDir).filter(f => f.endsWith('.astro') && f !== 'index.astro');
 
 const posts = files.map(f => {
   const content = fs.readFileSync(path.join(blogDir.pathname, f), 'utf-8');
   
-  // Extract frontmatter
+  // Try to extract title from BlogLayout component first (e.g., title="...")
+  const blogLayoutMatch = content.match(/<BlogLayout[^>]*title=["']([^"']+)["']/);
+  if (blogLayoutMatch) {
+    const dateMatch = content.match(/publishDate=["']([^"']+)["']/);
+    return {
+      slug: f.replace('.astro', ''),
+      title: blogLayoutMatch[1],
+      description: '',
+      date: dateMatch ? dateMatch[1] : '2026-01-01',
+    };
+  }
+  
+  // Try frontmatter for BaseLayout posts
   const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
-  if (!frontmatterMatch) return null;
+  if (frontmatterMatch) {
+    const frontmatter = frontmatterMatch[1];
+    const titleMatch = frontmatter.match(/title:\s*['"]([^'"]+)['"]/);
+    const descMatch = frontmatter.match(/description:\s*['"]([^'"]+)['"]/);
+    const dateMatch = frontmatter.match(/pubDate:\s*['"]([^'"]+)['"]/);
+    
+    return {
+      slug: f.replace('.astro', ''),
+      title: titleMatch ? titleMatch[1] : f.replace('.astro', '').replace(/-/g, ' '),
+      description: descMatch ? descMatch[1] : '',
+      date: dateMatch ? dateMatch[1] : '2026-01-01',
+    };
+  }
   
-  const frontmatter = frontmatterMatch[1];
-  
-  // Handle both formats: BlogLayout and BaseLayout
-  const titleMatch = frontmatter.match(/title:\s*['"]([^'"]+)['"]/);
-  const descMatch = frontmatter.match(/description:\s*['"]([^'"]+)['"]/);
-  const dateMatch = frontmatter.match(/publishDate:\s*['"]([^'"]+)['"]/) || 
-                    frontmatter.match(/pubDate:\s*['"]([^'"]+)['"]/);
-  
-  return {
-    slug: f.replace('.astro', ''),
-    title: titleMatch ? titleMatch[1] : f.replace('.astro', '').replace(/-/g, ' '),
-    description: descMatch ? descMatch[1] : '',
-    date: dateMatch ? dateMatch[1] : '2026-01-01',
-  };
+  return null;
 }).filter(p => p !== null);
 
-// Sort by date (newest first)
 const sortedPosts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 ---
 
