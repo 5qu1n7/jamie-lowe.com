@@ -3,34 +3,17 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
 import BlogCard from '../../components/BlogCard.astro';
 
-const allPosts = import.meta.glob('./*.astro', { eager: true });
-
-const posts = Object.entries(allPosts)
-  .filter(([path]) => !path.includes('index.astro'))
-  .map(([path, mod]) => {
-    if (mod.frontmatter && mod.frontmatter.title) {
-      return {
-        slug: path.replace('./', '').replace('.astro', ''),
-        title: mod.frontmatter.title,
-        description: mod.frontmatter.description || '',
-        date: mod.frontmatter.pubDate || mod.frontmatter.publishDate || '2026-01-01',
-      };
-    }
-    return null;
-  })
-  .filter(p => p !== null);
+const posts = [
+  { slug: 'military-buyers-guide', title: "Military Home Buyer's Guide to San Antonio", description: 'Everything military families need to know about buying a home in San Antonio, from VA loans to BAH budgeting.', date: '2025-11-15' },
+  { slug: 'va-loans-explained', title: 'VA Loans in Texas: Everything Military Home Buyers Need to Know', description: 'A comprehensive guide to VA loans, eligibility requirements, benefits, and how to maximize this military benefit.', date: '2025-10-22' },
+  { slug: 'military-communities-north', title: 'Military-Friendly Communities in North San Antonio', description: 'Discover the best neighborhoods for military families in North San Antonio with excellent schools and amenities.', date: '2025-09-08' },
+  { slug: 'bah-budgeting', title: 'Understanding Your Military BAH: Home Buying Budget Planning', description: 'Your Basic Allowance for Housing (BAH) is the foundation of your military home buying budget.', date: '2025-05-19' },
+  { slug: 'military-communities-east', title: 'Military-Friendly Communities in East San Antonio', description: 'Explore the top military-friendly neighborhoods in East San Antonio near Fort Sam Houston.', date: '2025-08-15' },
+  { slug: 'new-construction-vs-existing', title: 'New Construction vs. Existing Homes: A Military Family Buyer', description: 'Weighing the pros and cons of new construction vs. existing homes for military families.', date: '2025-07-10' },
+  { slug: 'pcs-checklist', title: 'PCS Moving Checklist: San Antonio Edition', description: 'Essential checklist for military families relocating to San Antonio.', date: '2025-06-20' },
+  { slug: 'schools-military-families', title: 'Best School Districts for Military Families in San Antonio', description: 'Find the best schools for military children in the San Antonio area.', date: '2025-04-12' },
+];
 ---
-
-<!-- DEBUG START -->
-<div style="background: yellow; padding: 20px; margin: 20px;">
-  <h1 style="color: red;">DEBUG: Found {posts.length} posts</h1>
-  <ul>
-    {posts.map(p => (
-      <li><strong>{p.title}</strong> - {p.date}</li>
-    ))}
-  </ul>
-</div>
-<!-- DEBUG END -->
 
 <BaseLayout 
   title="Blog - Jamie Lowe Real Estate"
