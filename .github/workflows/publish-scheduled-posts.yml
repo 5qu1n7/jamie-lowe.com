@@ -11,15 +11,22 @@ on:
         required: false
         default: ''
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   publish-scheduled:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     permissions:
       contents: write
       pages: write
       id-token: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -29,7 +36,6 @@ jobs:
       - name: Determine date to publish
         id: get_date
         run: |
-          # Use input date if provided, otherwise use today's date
           if [ -n "${{ github.event.inputs.publish_date }}" ]; then
             PUBLISH_DATE="${{ github.event.inputs.publish_date }}"
           else
@@ -56,43 +62,23 @@ jobs:
             echo "found_posts=false" >> $GITHUB_OUTPUT
           fi
       
-      - name: Publish posts and update index
+      - name: Publish posts
         if: steps.check_posts.outputs.found_posts == 'true'
         run: |
+          set -x
           PUBLISH_DATE="${{ steps.get_date.outputs.publish_date }}"
           DRAFT_DIR="src/pages/blog/_drafts"
           
-          echo "Publishing posts for date: $PUBLISH_DATE"
-          ls -la "$DRAFT_DIR/"
+          echo "Looking for posts dated: $PUBLISH_DATE in $DRAFT_DIR"
           
           for post in $(find "$DRAFT_DIR" -name "*$PUBLISH_DATE-*.astro" 2>/dev/null || true); do
-            echo "Found post: $post"
             FILENAME=$(basename "$post")
             NEWNAME=$(echo "$FILENAME" | sed "s/[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}-//")
             cp "$post" "src/pages/blog/$NEWNAME"
             echo "Published: $NEWNAME"
-            
-            # Extract title from the file content
-            TITLE=$(grep -m1 "title=" "src/pages/blog/$NEWNAME" | head -1 | sed 's/.*title="\([^"]*\)".*/\1/' | tr -d '\n')
-            DATE=$PUBLISH_DATE
-            
-            # Extract description
-            DESC=$(sed -n '/<BlogLayout/,/<\/BlogLayout/p' "src/pages/blog/$NEWNAME" 2>/dev/null | head -1 | sed 's/<[^>]*>//g' | xargs | head -c 150 | sed "s/\"/'/g")
-            
-            # Strip .astro extension for slug
-            SLUG=$(echo "$NEWNAME" | sed 's/\.astro$//')
-            
-            echo "Title: $TITLE, Date: $DATE, Slug: $SLUG"
-            
-            # Add to blog list in index.astro
-            INDEX_FILE="src/pages/blog/index.astro"
-            if [ -f "$INDEX_FILE" ]; then
-              if ! grep -q "$TITLE" "$INDEX_FILE"; then
-                sed -i "s/const posts = \[/const posts = [\n  { slug: '$SLUG', title: \"$TITLE\", description: \"$DESC\", date: '$DATE' },/" "$INDEX_FILE"
-                echo "Added $TITLE to blog index"
-              fi
-            fi
           done
+          
+          echo "Done publishing posts"
       
       - name: Commit and push
         if: steps.check_posts.outputs.found_posts == 'true'
@@ -101,4 +87,4 @@ jobs:
           git config user.email "actions@github.com"
           git add src/pages/blog/
           git commit -m "Publish scheduled blog posts for ${{ steps.get_date.outputs.publish_date }}"
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
+          git push
