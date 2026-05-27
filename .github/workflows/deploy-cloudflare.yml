@@ -4,36 +4,30 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
+      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-
-      - name: Install pnpm
-        run: npm install -g pnpm
-
+          cache: 'npm'
+      
       - name: Install dependencies
-        run: pnpm install
-
-      - name: Build Astro site
-        run: pnpm build
-
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: jamie-lowe.com
-          directory: dist
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        run: npm install --legacy-peer-deps
+      
+      - name: Build site
+        run: npm run build
+      
+      - name: Verify build output
+        run: |
+          echo "✅ Build complete"
+          echo "Total files in dist/: $(find dist -type f | wc -l)"
+          echo "Blog posts: $(find dist/blog -type f -name 'index.html' 2>/dev/null | wc -l)"
