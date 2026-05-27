@@ -31,3 +31,11 @@ jobs:
           echo "✅ Build complete"
           echo "Total files in dist/: $(find dist -type f | wc -l)"
           echo "Blog posts: $(find dist/blog -type f -name 'index.html' 2>/dev/null | wc -l)"
+      
+      - name: Deploy to Cloudflare Pages
+        run: |
+          npm install -g wrangler
+          wrangler pages deploy dist --project-name=jamie-lowe.com --branch=main
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
